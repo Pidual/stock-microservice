@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.emazon.stock_microservice.infraestructure.output.jpa.adapter.CategoryJpaAdapterTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-08-19T21:09:56" hostname="DESKTOP-FF2TNS5" time="0.553">
+  <properties/>
+  <testcase name="deleteCategory()" classname="com.emazon.stock_microservice.infraestructure.output.jpa.adapter.CategoryJpaAdapterTest" time="0.528"/>
+  <testcase name="saveCategory()" classname="com.emazon.stock_microservice.infraestructure.output.jpa.adapter.CategoryJpaAdapterTest" time="0.007"/>
+  <testcase name="getCategoryByName()" classname="com.emazon.stock_microservice.infraestructure.output.jpa.adapter.CategoryJpaAdapterTest" time="0.006"/>
+  <testcase name="updateCategory()" classname="com.emazon.stock_microservice.infraestructure.output.jpa.adapter.CategoryJpaAdapterTest" time="0.002"/>
+  <testcase name="saveCategory_ShouldThrowException_WhenCategoryAlreadyExists()" classname="com.emazon.stock_microservice.infraestructure.output.jpa.adapter.CategoryJpaAdapterTest" time="0.003"/>
+  <testcase name="getCategoryById()" classname="com.emazon.stock_microservice.infraestructure.output.jpa.adapter.CategoryJpaAdapterTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
