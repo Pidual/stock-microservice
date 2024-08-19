@@ -76,43 +76,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Gradle.Build stock-microservice.executor": "Run",
-    "Gradle.CategoryJpaAdapterTest.executor": "Run",
-    "Gradle.CategoryJpaAdapterTest.getCategoryByName.executor": "Run",
-    "Gradle.CategoryJpaAdapterTest.saveCategory.executor": "Run",
-    "Gradle.CategoryJpaAdapterTest.saveCategory_ShouldThrowException_WhenCategoryAlreadyExists.executor": "Run",
-    "Gradle.CategoryRestControllerTest.addCategory_ShouldReturnCreatedStatus.executor": "Run",
-    "Gradle.CategoryRestControllerTest.executor": "Run",
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.stock-microservice [bootRun].executor": "Run",
-    "Gradle.stock-microservice [build].executor": "Run",
-    "Gradle.stock-microservice [clean].executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.StockMicroserviceApplication.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "hu.1",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.Build stock-microservice.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CategoryJpaAdapterTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CategoryJpaAdapterTest.getCategoryByName.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CategoryJpaAdapterTest.saveCategory.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CategoryJpaAdapterTest.saveCategory_ShouldThrowException_WhenCategoryAlreadyExists.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CategoryRestControllerTest.addCategory_ShouldReturnCreatedStatus.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CategoryRestControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.stock-microservice [bootRun].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.stock-microservice [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.stock-microservice [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.StockMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hu.1&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
