@@ -1,7 +1,7 @@
 package com.emazon.stock_microservice.application.handler;
 
 import com.emazon.stock_microservice.application.dto.CategoryRequest;
-//import com.emazon.stock_microservice.application.dto.CategoryResponse;
+
 
 import java.util.List;
 

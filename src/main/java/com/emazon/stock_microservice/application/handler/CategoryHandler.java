@@ -4,7 +4,6 @@ import com.emazon.stock_microservice.application.dto.CategoryRequest;
 import com.emazon.stock_microservice.application.mapper.CategoryRequestMapper;
 import com.emazon.stock_microservice.domain.api.ICategoryServicePort;
 import com.emazon.stock_microservice.domain.model.Category;
-import com.emazon.stock_microservice.infraestructure.exception.CategoryNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -50,6 +49,6 @@ public class CategoryHandler implements ICategoryHandler {
 
     @Override
     public void deleteCategory(long id) {
-
+        categoryServicePort.deleteCategory(id);
     }
 }

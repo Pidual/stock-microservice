@@ -4,7 +4,7 @@ import com.emazon.stock_microservice.domain.model.Category;
 
 import java.util.List;
 
- //idk why
+ //what does this? why
 public interface ICategoryServicePort {
 
     void saveCategory(Category category); //POST
