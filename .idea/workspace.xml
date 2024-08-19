@@ -289,9 +289,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.stock-microservice [bootRun]" />
         <item itemvalue="Gradle.stock-microservice [build]" />
         <item itemvalue="Gradle.stock-microservice [clean]" />
+        <item itemvalue="Gradle.stock-microservice [bootRun]" />
         <item itemvalue="Gradle.StockMicroserviceApplicationTests" />
         <item itemvalue="Gradle.CategoryJpaAdapterTest" />
       </list>
