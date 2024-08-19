@@ -5,13 +5,13 @@ import com.emazon.stock_microservice.infraestructure.exception.CategoryAlreadyEx
 import com.emazon.stock_microservice.infraestructure.output.jpa.entity.CategoryEntity;
 import com.emazon.stock_microservice.infraestructure.output.jpa.mapper.CategoryEntityMapper;
 import com.emazon.stock_microservice.infraestructure.output.jpa.repository.ICategoryRepository;
-import org.junit.jupiter.api.AfterEach;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
 
 import java.util.Optional;
 

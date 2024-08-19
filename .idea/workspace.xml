@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="477aa5c5-50a6-44bc-b390-c2b4fcce5ed8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/infraestructure/output/jpa/adapter/CategoryJpaAdapterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/CategoryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/CategoryHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/ICategoryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/ICategoryHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/api/ICategoryServicePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/api/ICategoryServicePort.java" afterDir="false" />
-    </list>
+    <list default="true" id="477aa5c5-50a6-44bc-b390-c2b4fcce5ed8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,6 +81,7 @@
     "Downloaded.Files.Path.Enabled": "false",
     "Gradle.Build stock-microservice.executor": "Run",
     "Gradle.CategoryJpaAdapterTest.executor": "Run",
+    "Gradle.CategoryJpaAdapterTest.getCategoryByName.executor": "Run",
     "Gradle.CategoryJpaAdapterTest.saveCategory.executor": "Run",
     "Gradle.CategoryJpaAdapterTest.saveCategory_ShouldThrowException_WhenCategoryAlreadyExists.executor": "Run",
     "Gradle.CategoryRestControllerTest.addCategory_ShouldReturnCreatedStatus.executor": "Run",
@@ -301,7 +294,7 @@
       <workItem from="1724081474466" duration="607000" />
       <workItem from="1724082094635" duration="2263000" />
       <workItem from="1724084389874" duration="3280000" />
-      <workItem from="1724100706123" duration="814000" />
+      <workItem from="1724100706123" duration="1687000" />
     </task>
     <servers />
   </component>
