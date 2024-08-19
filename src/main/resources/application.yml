@@ -1,0 +1,12 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/categoriadb
+    username: admin
+    password: admin
+
+  jpa:
+    hibernate:
+      ddl-auto: update
