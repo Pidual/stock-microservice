@@ -13,6 +13,14 @@ java {
 	}
 }
 
+bootJar { //this fixed an error with bootJar
+	enabled = false
+}
+
+jar { //idk what this does btw
+	enabled = true
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -29,6 +37,8 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
+
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 	testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
@@ -39,7 +49,6 @@ dependencies {
 
 	// Mockito dependency (optional)
 	testImplementation 'org.mockito:mockito-core:4.0.0'
-
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	runtimeOnly 'com.mysql:mysql-connector-j'

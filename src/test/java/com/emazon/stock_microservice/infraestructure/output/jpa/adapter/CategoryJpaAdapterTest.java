@@ -33,7 +33,6 @@ class CategoryJpaAdapterTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-
     }
 
 
