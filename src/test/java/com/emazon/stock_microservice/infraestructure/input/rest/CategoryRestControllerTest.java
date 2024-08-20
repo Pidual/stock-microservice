@@ -44,8 +44,10 @@ class CategoryRestControllerTest {
 
     @Test
     void getAllCategories_ShouldReturnOkStatus() {
+        //Arrange
+
         // Act
-        ResponseEntity<?> responseEntity = categoryRestController.getAllCategories();
+        ResponseEntity<?> responseEntity = categoryRestController.getCategories(0,3,"name,asc");
         // Assert
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }

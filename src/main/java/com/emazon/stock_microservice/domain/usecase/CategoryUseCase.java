@@ -3,12 +3,12 @@ package com.emazon.stock_microservice.domain.usecase;
 import com.emazon.stock_microservice.domain.api.ICategoryServicePort;
 import com.emazon.stock_microservice.domain.model.Category;
 import com.emazon.stock_microservice.domain.spi.ICategoryPersistencePort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 
-// HUH__?????
-// ESTE ES NUESTRO PUERTO DE SALIDA
 public class CategoryUseCase implements ICategoryServicePort {
 
     //Dont use @Autowired bc domain driven desig
@@ -24,8 +24,8 @@ public class CategoryUseCase implements ICategoryServicePort {
     }
 
     @Override
-    public List<Category> getAllCategories() {
-        return categoryPersistencePort.getAllCategories();
+    public Page<Category> getAllCategories(Pageable pageable) {
+        return categoryPersistencePort.getCategories(pageable);
     }
 
     @Override

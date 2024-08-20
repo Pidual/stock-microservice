@@ -1,6 +1,5 @@
 package com.emazon.stock_microservice.infraestructure.output.jpa.adapter;
 
-
 import com.emazon.stock_microservice.domain.model.Category;
 import com.emazon.stock_microservice.domain.spi.ICategoryPersistencePort;
 import com.emazon.stock_microservice.infraestructure.exception.CategoryAlreadyExistsException;
@@ -11,6 +10,8 @@ import com.emazon.stock_microservice.infraestructure.output.jpa.entity.CategoryE
 import com.emazon.stock_microservice.infraestructure.output.jpa.mapper.CategoryEntityMapper;
 import com.emazon.stock_microservice.infraestructure.output.jpa.repository.ICategoryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -25,7 +26,17 @@ public class CategoryJpaAdapter implements ICategoryPersistencePort {
     private final CategoryEntityMapper categoryEntityMapper;
 
 
-    //NO WAY THIS WAS THE PROBLEM
+    @Override
+    public Page<Category> getCategories(Pageable pageable) {
+        Page<CategoryEntity> categoryEntityPage = categoryRepository.findAll(pageable);
+
+        if (categoryEntityPage.isEmpty()) {
+            throw new NoDataException();
+        }
+        return categoryEntityPage.map(categoryEntityMapper::toCategory);
+    }
+
+
     @Override
     public void saveCategory(Category category) {
         validateCategory(category);
@@ -35,14 +46,7 @@ public class CategoryJpaAdapter implements ICategoryPersistencePort {
         categoryRepository.save(categoryEntityMapper.toEntity(category));
     }
 
-    @Override
-    public List<Category> getAllCategories() {
-        List<CategoryEntity> categoryEntityList = categoryRepository.findAll();
-        if(categoryEntityList.isEmpty()){
-            throw new NoDataException();
-        }
-        return categoryEntityMapper.toCategoryList(categoryEntityList);
-    }
+
 
     @Override
     public Category getCategoryById(Long categoryId) {

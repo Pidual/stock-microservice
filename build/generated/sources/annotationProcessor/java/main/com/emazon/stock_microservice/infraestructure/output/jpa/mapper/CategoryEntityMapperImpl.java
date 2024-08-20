@@ -2,14 +2,12 @@ package com.emazon.stock_microservice.infraestructure.output.jpa.mapper;
 
 import com.emazon.stock_microservice.domain.model.Category;
 import com.emazon.stock_microservice.infraestructure.output.jpa.entity.CategoryEntity;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-08-19T17:25:32-0500",
+    date = "2024-08-19T21:21:59-0500",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.8.jar, environment: Java 17.0.12 (Amazon.com Inc.)"
 )
 @Component
@@ -47,19 +45,5 @@ public class CategoryEntityMapperImpl implements CategoryEntityMapper {
         Category category = new Category( id, name, description );
 
         return category;
-    }
-
-    @Override
-    public List<Category> toCategoryList(List<CategoryEntity> entities) {
-        if ( entities == null ) {
-            return null;
-        }
-
-        List<Category> list = new ArrayList<Category>( entities.size() );
-        for ( CategoryEntity categoryEntity : entities ) {
-            list.add( toCategory( categoryEntity ) );
-        }
-
-        return list;
     }
 }

@@ -1,6 +1,8 @@
 package com.emazon.stock_microservice.application.handler;
 
 import com.emazon.stock_microservice.application.dto.CategoryRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 
 import java.util.List;
@@ -9,7 +11,8 @@ public interface ICategoryHandler {
 
     void saveCategory(CategoryRequest category);
 
-    List<CategoryRequest> getAllCategories();
+    Page<CategoryRequest> getAllCategories(Pageable pageable);
+
 
     CategoryRequest getCategory(Long id);
 
