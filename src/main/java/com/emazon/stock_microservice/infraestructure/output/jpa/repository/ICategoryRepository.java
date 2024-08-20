@@ -1,6 +1,5 @@
 package com.emazon.stock_microservice.infraestructure.output.jpa.repository;
 
-import com.emazon.stock_microservice.domain.model.Category;
 import com.emazon.stock_microservice.infraestructure.output.jpa.entity.CategoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 

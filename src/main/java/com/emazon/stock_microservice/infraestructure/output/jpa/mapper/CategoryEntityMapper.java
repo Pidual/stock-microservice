@@ -6,9 +6,7 @@ import com.emazon.stock_microservice.infraestructure.output.jpa.entity.CategoryE
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
-import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,

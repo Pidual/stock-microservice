@@ -5,50 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="477aa5c5-50a6-44bc-b390-c2b4fcce5ed8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/model/Brand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/StockMicroserviceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/application/dto/CategoryRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/application/handler/CategoryHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/application/handler/ICategoryHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/application/mapper/CategoryRequestMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/application/mapper/CategoryRequestMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/domain/api/ICategoryServicePort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/domain/model/Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/domain/spi/ICategoryPersistencePort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/domain/usecase/CategoryUseCase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/configuration/BeanConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/exception/CategoryAlreadyExistsException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/exception/CategoryNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/exception/InvalidCategoryException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/exception/NoDataException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/adapter/CategoryJpaAdapter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/entity/CategoryEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/mapper/CategoryEntityMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/mapper/CategoryEntityMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/repository/ICategoryRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/emazon/stock_microservice/StockMicroserviceApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestControllerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/emazon/stock_microservice/infraestructure/output/jpa/adapter/CategoryJpaAdapterTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/emazon/stock_microservice/application/mapper/CategoryRequestMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/emazon/stock_microservice/application/mapper/CategoryRequestMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/mapper/CategoryEntityMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/mapper/CategoryEntityMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/stock-microservice-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resolvedMainClassName" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/CategoryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/CategoryHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/emazon/stock_microservice/StockMicroserviceApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/emazon/stock_microservice/StockMicroserviceApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/ICategoryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/ICategoryHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/api/ICategoryServicePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/api/ICategoryServicePort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/spi/ICategoryPersistencePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/spi/ICategoryPersistencePort.java" afterDir="false" />
@@ -56,7 +20,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/output/jpa/adapter/CategoryJpaAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/output/jpa/adapter/CategoryJpaAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/output/jpa/mapper/CategoryEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/output/jpa/mapper/CategoryEntityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/output/jpa/repository/ICategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/output/jpa/repository/ICategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/StockMicroserviceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/StockMicroserviceApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,45 +94,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Gradle.Build stock-microservice.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CategoryJpaAdapterTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CategoryJpaAdapterTest.getCategoryByName.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CategoryJpaAdapterTest.saveCategory.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CategoryJpaAdapterTest.saveCategory_ShouldThrowException_WhenCategoryAlreadyExists.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CategoryRestControllerTest.addCategory_ShouldReturnCreatedStatus.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CategoryRestControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StockMicroserviceApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.stock-microservice [bootRun].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.stock-microservice [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.stock-microservice [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.stock-microservice [testClasses].executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.StockMicroserviceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;hu.2&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Gradle.Build stock-microservice.executor": "Run",
+    "Gradle.CategoryJpaAdapterTest.executor": "Run",
+    "Gradle.CategoryJpaAdapterTest.getCategoryByName.executor": "Run",
+    "Gradle.CategoryJpaAdapterTest.saveCategory.executor": "Run",
+    "Gradle.CategoryJpaAdapterTest.saveCategory_ShouldThrowException_WhenCategoryAlreadyExists.executor": "Run",
+    "Gradle.CategoryRestControllerTest.addCategory_ShouldReturnCreatedStatus.executor": "Run",
+    "Gradle.CategoryRestControllerTest.executor": "Run",
+    "Gradle.CategoryRestControllerTest.getAllCategories_ShouldReturnOkStatus.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.StockMicroserviceApplicationTests.executor": "Run",
+    "Gradle.stock-microservice [bootRun].executor": "Run",
+    "Gradle.stock-microservice [build].executor": "Run",
+    "Gradle.stock-microservice [clean].executor": "Run",
+    "Gradle.stock-microservice [testClasses].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.StockMicroserviceApplication.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "hu.2",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -179,7 +145,7 @@
       <recent name="com.emazon.stock_microservice.infraestructure.input.rest" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.CategoryRestControllerTest.getAllCategories_ShouldReturnOkStatus">
+  <component name="RunManager" selected="Gradle.StockMicroserviceApplicationTests">
     <configuration name="CategoryJpaAdapterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -276,26 +242,28 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="stock-microservice [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="StockMicroserviceApplicationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="clean" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.emazon.stock_microservice.StockMicroserviceApplicationTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="StockMicroserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -307,11 +275,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.StockMicroserviceApplicationTests" />
         <item itemvalue="Gradle.CategoryRestControllerTest.getAllCategories_ShouldReturnOkStatus" />
         <item itemvalue="Gradle.CategoryRestControllerTest" />
         <item itemvalue="Gradle.CategoryJpaAdapterTest" />
         <item itemvalue="Gradle.CategoryJpaAdapterTest.saveCategory" />
-        <item itemvalue="Gradle.stock-microservice [clean]" />
       </list>
     </recent_temporary>
   </component>
@@ -352,7 +320,7 @@
       <workItem from="1724106451219" duration="894000" />
       <workItem from="1724111197939" duration="2070000" />
       <workItem from="1724113374114" duration="1200000" />
-      <workItem from="1724117065267" duration="4052000" />
+      <workItem from="1724117065267" duration="4915000" />
     </task>
     <servers />
   </component>
