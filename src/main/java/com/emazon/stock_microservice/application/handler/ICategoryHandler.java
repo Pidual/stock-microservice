@@ -7,14 +7,13 @@ import org.springframework.data.domain.Pageable;
 
 public interface ICategoryHandler {
 
-    void saveCategory(CategoryRequest category);
+    void saveCategory(CategoryRequest category); // CREATE
 
-    Page<CategoryRequest> getAllCategories(Pageable pageable);
+    Page<CategoryRequest> getAllCategories(Pageable pageable); // GET ALL
 
+    CategoryRequest getCategory(Long id);  // GET
 
-    CategoryRequest getCategory(Long id);
+    void updateCategory(CategoryRequest categoryDTO); // UPDATE
 
-    void updateCategory(CategoryRequest categoryDTO);
-
-    void deleteCategory(long id);
+    void deleteCategory(long id); // DELETE
 }

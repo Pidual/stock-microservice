@@ -14,9 +14,9 @@ public interface ICategoryPersistencePort {
 
     void saveCategory(Category category); //POST
 
-    Page<Category> getCategories(Pageable pageable); //GET
+    Page<Category> getAllCategories(Pageable pageable); //Aca uno como hace para no meter page en el dominio?
 
-    Category getCategoryById(Long categoryId); //GET
+    Category getCategory(Long categoryId); //GET
 
     void deleteCategory(Long categoryId); //DELETE
 

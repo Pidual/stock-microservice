@@ -10,26 +10,26 @@ import org.springframework.data.domain.Pageable;
 
 public class CategoryUseCase implements ICategoryServicePort {
 
-    //Dont use @Autowired bc domain driven desig
-    private final ICategoryPersistencePort categoryPersistencePort; // esto
+    //Dont use @Autowired bc domain driven design
+    private final ICategoryPersistencePort categoryPersistencePort;
 
     public CategoryUseCase(ICategoryPersistencePort categoryPersistencePort) {
         this.categoryPersistencePort = categoryPersistencePort;
     }
 
     @Override
-    public void saveCategory(Category category) { // done
+    public void saveCategory(Category category) {
         this.categoryPersistencePort.saveCategory(category);
     }
 
     @Override
     public Page<Category> getAllCategories(Pageable pageable) {
-        return categoryPersistencePort.getCategories(pageable);
+        return categoryPersistencePort.getAllCategories(pageable);
     }
 
     @Override
     public Category getCategoryById(Long categoryId) {
-        return categoryPersistencePort.getCategoryById(categoryId);
+        return categoryPersistencePort.getCategory(categoryId);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class CategoryUseCase implements ICategoryServicePort {
     }
 
     @Override
-    public void deleteCategory(Long categoryId) {
+    public void deleteCategoryById(Long categoryId) {
         categoryPersistencePort.deleteCategory(categoryId);
     }
 

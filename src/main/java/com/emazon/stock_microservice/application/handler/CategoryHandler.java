@@ -47,6 +47,6 @@ public class CategoryHandler implements ICategoryHandler {
 
     @Override
     public void deleteCategory(long id) {
-        categoryServicePort.deleteCategory(id);
+        categoryServicePort.deleteCategoryById(id);
     }
 }

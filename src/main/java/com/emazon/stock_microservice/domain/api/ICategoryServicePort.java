@@ -10,11 +10,11 @@ public interface ICategoryServicePort {
 
     void saveCategory(Category category); //POST
 
-    Page<Category> getAllCategories(Pageable pageable); //GET
+    Page<Category> getAllCategories(Pageable pageable); //GET TODO change the Page to another
 
     Category getCategoryById(Long categoryId); //GET
 
-    void deleteCategory(Long categoryId); //DELETE
+    void deleteCategoryById(Long categoryId); //DELETE
 
     void updateCategory(Category category); // PUT
 
