@@ -24,6 +24,16 @@ public class CategoryJpaAdapter implements ICategoryPersistencePort {
 
 
     @Override
+    public void saveCategory(Category category) {
+        validateCategory(category);
+        if(categoryRepository.findByName(category.getName()).isPresent()){
+            throw new CategoryAlreadyExistsException();
+        }
+        categoryRepository.save(categoryEntityMapper.toEntity(category));
+    }
+
+
+    @Override
     public Page<Category> getAllCategories(Pageable pageable) {
         Page<CategoryEntity> categoryEntityPage = categoryRepository.findAll(pageable);
 
@@ -35,20 +45,8 @@ public class CategoryJpaAdapter implements ICategoryPersistencePort {
 
 
     @Override
-    public void saveCategory(Category category) {
-        validateCategory(category);
-        if(categoryRepository.findByName(category.getName()).isPresent()){
-            throw new CategoryAlreadyExistsException();
-        }
-        categoryRepository.save(categoryEntityMapper.toEntity(category));
-    }
-
-
-
-    @Override
     public Category getCategory(Long categoryId) {
-        return categoryEntityMapper.toCategory(categoryRepository.findById(categoryId)
-                .orElseThrow(CategoryNotFoundException::new));
+        return categoryEntityMapper.toCategory(categoryRepository.findById(categoryId).orElseThrow(CategoryNotFoundException::new));
     }
 
     @Override
@@ -56,16 +54,15 @@ public class CategoryJpaAdapter implements ICategoryPersistencePort {
         return categoryEntityMapper.toCategory(categoryRepository.findByName(categoryName).orElseThrow(CategoryNotFoundException::new));
     }
 
-
-    @Override
-    public void deleteCategory(Long categoryId) {
-        categoryRepository.deleteById(categoryId);
-    }
-
     @Override
     public void updateCategory(Category category) {
         validateCategory(category);
         categoryRepository.save(categoryEntityMapper.toEntity(category));
+    }
+
+    @Override
+    public void deleteCategory(Long categoryId) {
+        categoryRepository.deleteById(categoryId);
     }
 
 

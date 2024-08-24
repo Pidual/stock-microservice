@@ -2,6 +2,8 @@ package com.emazon.stock_microservice.application.handler;
 
 import com.emazon.stock_microservice.application.dto.BrandRequest;
 import com.emazon.stock_microservice.domain.model.Brand;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface IBrandHandler {
 
@@ -9,10 +11,11 @@ public interface IBrandHandler {
 
     void updateBrand(BrandRequest brandRequest);
 
-    void deleteBrandById(BrandRequest brandRequest);
+    void deleteBrand(BrandRequest brandRequest);
 
-    //List<Brand> getAllBrands(); TODO: convertir a page
 
-    Brand getBrandById(Long id);
+    Page<BrandRequest> getAllBrands(Pageable pageable);   //TODO: convertir a page
+
+    BrandRequest getBrandById(Long id);
 
 }

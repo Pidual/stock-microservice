@@ -23,6 +23,8 @@ public class CategoryRestController {
 
     private final ICategoryHandler categoryHandler;
 
+
+    //Create POST
     @Operation(summary = "Add a new category")
     @ApiResponse(responseCode = "201", description = "Category created successfully")
     @PostMapping("/")
@@ -31,9 +33,9 @@ public class CategoryRestController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
+    // Read GET
     @Operation(summary = "Get all categories")
-    @ApiResponse(responseCode = "200", description = "Successfully retrieved list of categories")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved a pageable of categories")
     @GetMapping("/")
     public ResponseEntity<Page<CategoryRequest>> getCategories(
             @RequestParam(value = "page", defaultValue = "0") int page,

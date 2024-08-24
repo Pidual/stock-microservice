@@ -5,31 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="477aa5c5-50a6-44bc-b390-c2b4fcce5ed8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/dto/BrandRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/BrandHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/IBrandHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/mapper/BrandRequestMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/api/IBrandServicePort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/spi/IBrandPersistencePort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/usecase/BrandUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/configuration/BeanConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/exceptions/category_expetions/CategoryAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/exceptions/category_expetions/CategoryNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/exceptions/category_expetions/InvalidCategoryException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/exceptions/category_expetions/NoDataException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/input/rest/BrandRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/input/rest/CategoryRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/adapter/BrandJpaAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/adapter/CategoryJpaAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/entity/BrandEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/entity/CategoryEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/mapper/BrandEntityMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/mapper/CategoryEntityMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/repository/IBrandRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/repository/ICategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/application/dto/BrandRequestTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/infrastructure/input/rest/CategoryRestControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/infrastructure/output/jpa/adapter/CategoryJpaAdapterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/pagination/Pagination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/exceptions/brand_expections/BrandNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
@@ -37,37 +14,31 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/stock-microservice.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/stock-microservice.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/application/handler/CategoryHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/application/handler/CategoryHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/domain/api/ICategoryServicePort.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/domain/api/ICategoryServicePort.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/domain/spi/ICategoryPersistencePort.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/domain/spi/ICategoryPersistencePort.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/domain/usecase/CategoryUseCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/domain/usecase/CategoryUseCase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/configuration/BeanConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/configuration/BeanConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/adapter/CategoryJpaAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/adapter/CategoryJpaAdapter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/mapper/CategoryEntityMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/dto/CategoryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/dto/CategoryRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/CategoryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/CategoryHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/ICategoryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/ICategoryHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/api/ICategoryServicePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/api/ICategoryServicePort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/model/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/model/Brand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/spi/ICategoryPersistencePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/spi/ICategoryPersistencePort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/usecase/CategoryUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/usecase/CategoryUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/configuration/BeanConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/exception/CategoryAlreadyExistsException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/exception/CategoryNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/exception/InvalidCategoryException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/exception/NoDataException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/output/jpa/adapter/CategoryJpaAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/output/jpa/entity/CategoryEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/output/jpa/mapper/CategoryEntityMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infraestructure/output/jpa/repository/ICategoryRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/emazon/stock_microservice/infraestructure/output/jpa/adapter/CategoryJpaAdapterTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/StockMicroserviceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/application/dto/CategoryRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/application/dto/CategoryRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/application/mapper/CategoryRequestMapperImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/configuration/BeanConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/exception/CategoryAlreadyExistsException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/exception/CategoryNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/exception/InvalidCategoryException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/exception/NoDataException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/input/rest/CategoryRestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/adapter/CategoryJpaAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/entity/CategoryEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/mapper/CategoryEntityMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/mapper/CategoryEntityMapperImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emazon/stock_microservice/infraestructure/output/jpa/repository/ICategoryRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/emazon/stock_microservice/application/mapper/CategoryRequestMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/emazon/stock_microservice/application/mapper/CategoryRequestMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/BrandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/BrandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/IBrandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/application/handler/IBrandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/api/IBrandServicePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/domain/api/IBrandServicePort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/input/rest/BrandRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/input/rest/BrandRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/input/rest/CategoryRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/input/rest/CategoryRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/adapter/BrandJpaAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/adapter/BrandJpaAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/adapter/CategoryJpaAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/adapter/CategoryJpaAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/repository/IBrandRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emazon/stock_microservice/infrastructure/output/jpa/repository/IBrandRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,10 +90,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Exception" />
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -375,6 +346,8 @@
       <workItem from="1724278065792" duration="3572000" />
       <workItem from="1724290350010" duration="2815000" />
       <workItem from="1724332598751" duration="2816000" />
+      <workItem from="1724442537313" duration="8149000" />
+      <workItem from="1724529569056" duration="595000" />
     </task>
     <servers />
   </component>
