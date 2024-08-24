@@ -40,3 +40,9 @@ out/
 /.idea
 /.gradle
 /.gradle
+/.idea
+.idea/modules/stock-microservice.main.iml
+/.gradle
+.gradle/8.8/fileHashes/fileHashes.lock
+.idea/modules/stock-microservice.main.iml
+.idea/workspace.xml
