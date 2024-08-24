@@ -1,15 +1,18 @@
 package com.emazon.stock_microservice.domain.usecase;
 
+import com.emazon.stock_microservice.domain.api.IBrandServicePort;
 import com.emazon.stock_microservice.domain.model.Brand;
 import com.emazon.stock_microservice.domain.spi.IBrandPersistencePort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public class BrandUseCase  implements IBrandPersistencePort {
+//  >>> ServicePort
+public class BrandUseCase  implements IBrandServicePort {
 
     // the 'final' makes the class inherently immutable, preventing potential issues related to concurrent modifications and ensuring thread safety.
     private final IBrandPersistencePort brandPersistencePort; //
 
+    // Persistence port
     public BrandUseCase(IBrandPersistencePort brandPersistencePort) {
         this.brandPersistencePort = brandPersistencePort;
     }
@@ -25,13 +28,8 @@ public class BrandUseCase  implements IBrandPersistencePort {
     }
 
     @Override
-    public Brand getBrand(Long id) {
+    public Brand getBrandById(Long id) {
         return brandPersistencePort.getBrand(id);
-    }
-
-    @Override
-    public void deleteBrand(Long id) {
-        brandPersistencePort.deleteBrand(id);
     }
 
     @Override
@@ -39,10 +37,10 @@ public class BrandUseCase  implements IBrandPersistencePort {
         brandPersistencePort.updateBrand(brand);
     }
 
-
-
     @Override
-    public Brand getBrandByName(String name) {
-        return brandPersistencePort.getBrandByName(name);
+    public void deleteBrandById(Long id) {
+        brandPersistencePort.deleteBrand(id);
     }
+
+
 }

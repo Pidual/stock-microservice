@@ -37,10 +37,9 @@ public class CategoryRestController {
     @Operation(summary = "Get all categories")
     @ApiResponse(responseCode = "200", description = "Successfully retrieved a pageable of categories")
     @GetMapping("/")
-    public ResponseEntity<Page<CategoryRequest>> getCategories(
-            @RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "size", defaultValue = "10") int size,
-            @RequestParam(value = "sort", defaultValue = "name,asc") String sort) {
+    public ResponseEntity<Page<CategoryRequest>> getCategories(@RequestParam(value = "page", defaultValue = "0") int page,
+                                                               @RequestParam(value = "size", defaultValue = "10") int size,
+                                                               @RequestParam(value = "sort", defaultValue = "name,asc") String sort) {
         String[] sortParams = sort.split(",");
         String sortBy = sortParams[0];
         Sort.Direction direction = sortParams.length > 1 ? Sort.Direction.fromString(sortParams[1]) : Sort.Direction.ASC;

@@ -2,19 +2,23 @@ package com.emazon.stock_microservice.application.handler;
 
 
 import com.emazon.stock_microservice.application.dto.BrandRequest;
-import com.emazon.stock_microservice.application.dto.CategoryRequest;
 import com.emazon.stock_microservice.application.mapper.BrandRequestMapper;
 import com.emazon.stock_microservice.domain.api.IBrandServicePort;
 import com.emazon.stock_microservice.domain.model.Brand;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor //los constructores importante para la configuracion del bean y poner final en los atributos
+@Transactional //Spring will automatically manage the transaction for that method,
+// ensuring that any database operations performed within it are part of a single transaction.
 public class BrandHandler implements IBrandHandler {
 
-    private IBrandServicePort brandServicePort;
-    private BrandRequestMapper brandRequestMapper;
+    private final IBrandServicePort brandServicePort;
+    private final BrandRequestMapper brandRequestMapper;
 
     @Override
     public void saveBrand(BrandRequest brandRequest) {

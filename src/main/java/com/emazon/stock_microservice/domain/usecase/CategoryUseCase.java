@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 
 public class CategoryUseCase implements ICategoryServicePort {
 
-    //Dont use @Autowired bc domain driven design
+
     private final ICategoryPersistencePort categoryPersistencePort;
 
     public CategoryUseCase(ICategoryPersistencePort categoryPersistencePort) {

@@ -2,10 +2,11 @@ package com.emazon.stock_microservice.infrastructure.output.jpa.adapter;
 
 import com.emazon.stock_microservice.domain.model.Brand;
 import com.emazon.stock_microservice.domain.spi.IBrandPersistencePort;
+import com.emazon.stock_microservice.infrastructure.exceptions.brand_expections.BrandAlreadyExistsException;
 import com.emazon.stock_microservice.infrastructure.exceptions.brand_expections.BrandNotFoundException;
-import com.emazon.stock_microservice.infrastructure.exceptions.category_expetions.CategoryNotFoundException;
+import com.emazon.stock_microservice.infrastructure.exceptions.category_expetions.CategoryAlreadyExistsException;
 import com.emazon.stock_microservice.infrastructure.exceptions.category_expetions.InvalidCategoryException;
-import com.emazon.stock_microservice.infrastructure.exceptions.category_expetions.NoDataException;
+import com.emazon.stock_microservice.infrastructure.exceptions.NoDataException;
 import com.emazon.stock_microservice.infrastructure.output.jpa.entity.BrandEntity;
 import com.emazon.stock_microservice.infrastructure.output.jpa.mapper.BrandEntityMapper;
 import com.emazon.stock_microservice.infrastructure.output.jpa.repository.IBrandRepository;
@@ -23,16 +24,20 @@ public class BrandJpaAdapter implements IBrandPersistencePort {
     @Override
     public void saveBrand(Brand brand) {
         validateBrand(brand);
+        if(brandRepository.findByName(brand.getName()).isPresent()){
+            throw new BrandAlreadyExistsException();
+        }
+        brandRepository.save(brandEntityMapper.toBrandEntity(brand));
     }
 
     @Override
     public Page<Brand> getAllBrands(Pageable pageable) {
-        Page<BrandEntity> categoryEntityPage = brandRepository.findAll(pageable);
+        Page<BrandEntity> brandEntityPage = brandRepository.findAll(pageable);
 
-        if (categoryEntityPage.isEmpty()) {
+        if (brandEntityPage.isEmpty()) {
             throw new NoDataException();
         }
-        return categoryEntityPage.map(brandEntityMapper::toBrand);
+        return brandEntityPage.map(brandEntityMapper::toBrand);
     }
 
     @Override
