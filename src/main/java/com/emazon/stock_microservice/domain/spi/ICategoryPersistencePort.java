@@ -1,7 +1,10 @@
 package com.emazon.stock_microservice.domain.spi;
 
 import com.emazon.stock_microservice.domain.model.Category;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+
 
 // SPI??? Service provider interface
 // Definición de la SPI: El desarrollador del framework o aplicación define una interfaz (o varias)
@@ -11,9 +14,9 @@ public interface ICategoryPersistencePort {
 
     void saveCategory(Category category); //POST
 
-    List<Category> getAllCategories(); //GET
+    Page<Category> getAllCategories(Pageable pageable); //Aca uno como hace para no meter page en el dominio?
 
-    Category getCategoryById(Long categoryId); //GET
+    Category getCategory(Long categoryId); //GET
 
     void deleteCategory(Long categoryId); //DELETE
 
