@@ -12,12 +12,14 @@ public class CategoryRequest {
 
 
     private Long id;
+
     @NotBlank
     @Size(min = 1, max = 50)
     private String name;
+
+    @NotBlank
     @Size(min = 1, max = 90)
     private String description;
 
-
-    // TODO: poner aca las validaciones con anotaciones @NotBlank etc etc
+    //TODO: agregar mas validaciones
 }
