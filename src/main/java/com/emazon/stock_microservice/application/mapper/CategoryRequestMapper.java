@@ -18,4 +18,6 @@ public interface CategoryRequestMapper {
     @Mapping(source = "name", target = "name")
     @Mapping(source = "description", target = "description")
     CategoryRequest toCategoryRequest(Category category);
+
+
 }

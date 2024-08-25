@@ -36,4 +36,7 @@ out/
 ### VS Code ###
 .vscode/
 .idea/workspace.xml
-.idea/workspace.xml
+/.idea
+/.gradle
+.idea/modules/stock-microservice.main.iml
+.gradle/8.8/fileHashes/fileHashes.lock

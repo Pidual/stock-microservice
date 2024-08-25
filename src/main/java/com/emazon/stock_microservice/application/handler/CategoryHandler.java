@@ -6,10 +6,13 @@ import com.emazon.stock_microservice.domain.api.ICategoryServicePort;
 import com.emazon.stock_microservice.domain.model.Category;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
@@ -27,14 +30,6 @@ public class CategoryHandler implements ICategoryHandler {
     }
 
     @Override
-    public List<CategoryRequest> getAllCategories() {
-        return categoryServicePort.getAllCategories()
-                .stream()
-                .map(categoryRequestMapper::toCategoryRequest)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public CategoryRequest getCategory(Long id) {
         Category category = categoryServicePort.getCategoryById(id);
         return categoryRequestMapper.toCategoryRequest(category);
@@ -49,6 +44,19 @@ public class CategoryHandler implements ICategoryHandler {
 
     @Override
     public void deleteCategory(long id) {
-        categoryServicePort.deleteCategory(id);
+        categoryServicePort.deleteCategoryById(id);
+    }
+
+    @Override
+    public Page<CategoryRequest> getAllCategoriesPaged(Pageable pageable) {
+        return categoryServicePort.getAllCategoriesPaged(pageable).map(categoryRequestMapper::toCategoryRequest);
+    }
+
+    @Override
+    public List<CategoryRequest> getAllCategories() {
+        return categoryServicePort.getAllCategories()
+                .stream()
+                .map(categoryRequestMapper::toCategoryRequest)
+                .collect(Collectors.toList());
     }
 }
