@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 // documentation here http://localhost:8090/swagger-ui/index.html
 
 @RestController
@@ -33,22 +35,6 @@ public class CategoryRestController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    // Read GET
-    @Operation(summary = "Get all categories")
-    @ApiResponse(responseCode = "200", description = "Successfully retrieved a pageable of categories")
-    @GetMapping("/")
-    public ResponseEntity<Page<CategoryRequest>> getCategories(@RequestParam(value = "page", defaultValue = "0") int page,
-                                                               @RequestParam(value = "size", defaultValue = "10") int size,
-                                                               @RequestParam(value = "sort", defaultValue = "name,asc") String sort) {
-        String[] sortParams = sort.split(",");
-        String sortBy = sortParams[0];
-        Sort.Direction direction = sortParams.length > 1 ? Sort.Direction.fromString(sortParams[1]) : Sort.Direction.ASC;
-
-        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
-        return new ResponseEntity<>(categoryHandler.getAllCategories(pageable), HttpStatus.OK);
-    }
-
-
 
     @Operation(summary = "Get a category by the id")
     @ApiResponse(responseCode = "200", description = "Successfully retrieved a category by its id")
@@ -67,10 +53,34 @@ public class CategoryRestController {
     }
 
 
-    //TODO documentation better
+    @Operation(summary = "Deletes a category")
+    @ApiResponse(responseCode = "204", description = "Successfully deleted a category")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         categoryHandler.deleteCategory(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    // Read GET
+    @Operation(summary = "Get all categories")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved a pageable of categories")
+    @GetMapping("/paged")
+    public ResponseEntity<Page<CategoryRequest>> getCategoriesPaged(@RequestParam(value = "page", defaultValue = "0") int page,
+                                                                    @RequestParam(value = "size", defaultValue = "10") int size,
+                                                                    @RequestParam(value = "sort", defaultValue = "name,asc") String sort) {
+        String[] sortParams = sort.split(",");
+        String sortBy = sortParams[0];
+        Sort.Direction direction = sortParams.length > 1 ? Sort.Direction.fromString(sortParams[1]) : Sort.Direction.ASC;
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
+        return new ResponseEntity<>(categoryHandler.getAllCategoriesPaged(pageable), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Get every category")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved the whole rows of categories")
+    @GetMapping("/")
+    public ResponseEntity<List<CategoryRequest>> getAllCategories() {
+        return new ResponseEntity<>(categoryHandler.getAllCategories(), HttpStatus.OK);
+    }
+
 }

@@ -4,13 +4,13 @@ import com.emazon.stock_microservice.domain.model.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 
- //what does this? why
+
+//what does this? why
 public interface ICategoryServicePort {
 
     void saveCategory(Category category); //POST
-
-    Page<Category> getAllCategories(Pageable pageable); //GET TODO change the Page to another
 
     Category getCategoryById(Long categoryId); //GET
 
@@ -19,4 +19,9 @@ public interface ICategoryServicePort {
     void updateCategory(Category category); // PUT
 
      Category getCategoryByName(String name);
+
+    List<Category> getAllCategories();
+
+    Page<Category> getAllCategoriesPaged(Pageable pageable); //GET
+
  }

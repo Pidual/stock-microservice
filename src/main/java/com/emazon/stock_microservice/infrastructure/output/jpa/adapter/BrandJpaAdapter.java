@@ -14,12 +14,29 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 
 @RequiredArgsConstructor
 public class BrandJpaAdapter implements IBrandPersistencePort {
 
     private final IBrandRepository brandRepository;
     private final BrandEntityMapper brandEntityMapper;
+
+    private void validateBrand(Brand brand) {
+        // Check if the category has a description
+        if (brand.getDescription() == null || brand.getDescription().trim().isEmpty()) {
+            throw new InvalidCategoryException("Brand description cannot be empty.");
+        }
+        // Ensure the name doesn't exceed 50 characters
+        if (brand.getName().length() > 50) {
+            throw new InvalidCategoryException("Brand name cannot exceed 50 characters.");
+        }
+        // Ensure the description doesn't exceed 90 characters
+        if (brand.getDescription().length() > 90) {
+            throw new InvalidCategoryException("Brand description cannot exceed 90 characters.");
+        }
+    }
 
     @Override
     public void saveBrand(Brand brand) {
@@ -28,16 +45,6 @@ public class BrandJpaAdapter implements IBrandPersistencePort {
             throw new BrandAlreadyExistsException();
         }
         brandRepository.save(brandEntityMapper.toBrandEntity(brand));
-    }
-
-    @Override
-    public Page<Brand> getAllBrands(Pageable pageable) {
-        Page<BrandEntity> brandEntityPage = brandRepository.findAll(pageable);
-
-        if (brandEntityPage.isEmpty()) {
-            throw new NoDataException();
-        }
-        return brandEntityPage.map(brandEntityMapper::toBrand);
     }
 
     @Override
@@ -63,21 +70,24 @@ public class BrandJpaAdapter implements IBrandPersistencePort {
 
     }
 
+    @Override
+    public Page<Brand> getAllBrandsPaged(Pageable pageable) {
+        Page<BrandEntity> brandEntityPage = brandRepository.findAll(pageable);
 
-
-    private void validateBrand(Brand brand) {
-        // Check if the category has a description
-        if (brand.getDescription() == null || brand.getDescription().trim().isEmpty()) {
-            throw new InvalidCategoryException("Brand description cannot be empty.");
+        if (brandEntityPage.isEmpty()) {
+            throw new NoDataException();
         }
-        // Ensure the name doesn't exceed 50 characters
-        if (brand.getName().length() > 50) {
-            throw new InvalidCategoryException("Brand name cannot exceed 50 characters.");
-        }
-        // Ensure the description doesn't exceed 90 characters
-        if (brand.getDescription().length() > 90) {
-            throw new InvalidCategoryException("Brand description cannot exceed 90 characters.");
-        }
+        return brandEntityPage.map(brandEntityMapper::toBrand);
     }
+
+    @Override
+    public List<Brand> getAllBrands() {
+        List<BrandEntity> brandEntityList = brandRepository.findAll();
+        if(brandEntityList.isEmpty()){
+            throw new NoDataException();
+        }
+        return brandEntityMapper.toBrandList(brandEntityList);
+    }
+
 
 }

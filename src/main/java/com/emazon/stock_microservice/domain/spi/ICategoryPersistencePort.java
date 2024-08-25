@@ -4,6 +4,7 @@ import com.emazon.stock_microservice.domain.model.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 
 
 // SPI??? Service provider interface
@@ -14,7 +15,10 @@ public interface ICategoryPersistencePort {
 
     void saveCategory(Category category); //POST
 
-    Page<Category> getAllCategories(Pageable pageable); //Aca uno como hace para no meter page en el dominio?
+
+    List<Category> getAllCategories(); //Aca uno como hace para no meter page en el dominio?
+
+    Page<Category> getAllCategoriesPaged(Pageable pageable);
 
     Category getCategory(Long categoryId); //GET
 
