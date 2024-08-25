@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 
 @RequiredArgsConstructor
 // This class communicates with the spi package that is in DOMAIN
@@ -22,6 +24,20 @@ public class CategoryJpaAdapter implements ICategoryPersistencePort {
     private final ICategoryRepository categoryRepository;
     private final CategoryEntityMapper categoryEntityMapper;
 
+    private void validateCategory(Category category) {
+        // Check if the category has a description
+        if (category.getDescription() == null || category.getDescription().trim().isEmpty()) {
+            throw new InvalidCategoryException("Category description cannot be empty.");
+        }
+        // Ensure the name doesn't exceed 50 characters
+        if (category.getName().length() > 50) {
+            throw new InvalidCategoryException("Category name cannot exceed 50 characters.");
+        }
+        // Ensure the description doesn't exceed 90 characters
+        if (category.getDescription().length() > 90) {
+            throw new InvalidCategoryException("Category description cannot exceed 90 characters.");
+        }
+    }
 
     @Override
     public void saveCategory(Category category) {
@@ -31,18 +47,6 @@ public class CategoryJpaAdapter implements ICategoryPersistencePort {
         }
         categoryRepository.save(categoryEntityMapper.toEntity(category));
     }
-
-
-    @Override
-    public Page<Category> getAllCategories(Pageable pageable) {
-        Page<CategoryEntity> categoryEntityPage = categoryRepository.findAll(pageable);
-
-        if (categoryEntityPage.isEmpty()) {
-            throw new NoDataException();
-        }
-        return categoryEntityPage.map(categoryEntityMapper::toCategory);
-    }
-
 
     @Override
     public Category getCategory(Long categoryId) {
@@ -65,20 +69,24 @@ public class CategoryJpaAdapter implements ICategoryPersistencePort {
         categoryRepository.deleteById(categoryId);
     }
 
-
-    private void validateCategory(Category category) {
-        // Check if the category has a description
-        if (category.getDescription() == null || category.getDescription().trim().isEmpty()) {
-            throw new InvalidCategoryException("Category description cannot be empty.");
+    @Override
+    public Page<Category> getAllCategoriesPaged(Pageable pageable) {
+        Page<CategoryEntity> categoryEntityPage = categoryRepository.findAll(pageable);
+        if (categoryEntityPage.isEmpty()) {
+            throw new NoDataException();
         }
-        // Ensure the name doesn't exceed 50 characters
-        if (category.getName().length() > 50) {
-            throw new InvalidCategoryException("Category name cannot exceed 50 characters.");
-        }
-        // Ensure the description doesn't exceed 90 characters
-        if (category.getDescription().length() > 90) {
-            throw new InvalidCategoryException("Category description cannot exceed 90 characters.");
-        }
+        return categoryEntityPage.map(categoryEntityMapper::toCategory);
     }
+
+    @Override
+    public List<Category> getAllCategories() {
+        List<CategoryEntity> categoryEntityList = categoryRepository.findAll();
+        if(categoryEntityList.isEmpty()){
+            throw new NoDataException();
+        }
+        return categoryEntityMapper.toCategoryList(categoryEntityList);
+    }
+
+
 
 }

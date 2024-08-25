@@ -7,6 +7,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
+
 
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
@@ -25,5 +27,5 @@ public interface CategoryEntityMapper {
     Category toCategory(CategoryEntity entity);
 
 
-    //List<Category> toCategoryList(Pageable pageable); //this should work for the love of god
+    List<Category> toCategoryList(List<CategoryEntity> entities);//this should work for the love of god
 }

@@ -6,6 +6,7 @@ import com.emazon.stock_microservice.domain.spi.ICategoryPersistencePort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 
 
 public class CategoryUseCase implements ICategoryServicePort {
@@ -23,9 +24,15 @@ public class CategoryUseCase implements ICategoryServicePort {
     }
 
     @Override
-    public Page<Category> getAllCategories(Pageable pageable) {
-        return categoryPersistencePort.getAllCategories(pageable);
+    public Page<Category> getAllCategoriesPaged(Pageable pageable) {
+        return categoryPersistencePort.getAllCategoriesPaged(pageable);
     }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return categoryPersistencePort.getAllCategories();
+    }
+
 
     @Override
     public Category getCategoryById(Long categoryId) {

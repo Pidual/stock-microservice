@@ -49,7 +49,7 @@ class CategoryRestControllerTest {
         //Arrange
 
         // Act
-        ResponseEntity<?> responseEntity = categoryRestController.getCategories(0,3,"name,asc");
+        ResponseEntity<?> responseEntity = categoryRestController.getCategoriesPaged(0,3,"name,asc");
         // Assert
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }

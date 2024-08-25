@@ -2,8 +2,8 @@ package com.emazon.stock_microservice.infrastructure.input.rest;
 
 
 import com.emazon.stock_microservice.application.dto.BrandRequest;
-import com.emazon.stock_microservice.application.dto.CategoryRequest;
 import com.emazon.stock_microservice.application.handler.IBrandHandler;
+import com.emazon.stock_microservice.infrastructure.output.jpa.entity.BrandEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -34,31 +34,10 @@ public class BrandRestController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    // Read GET
-
-
-    // get all (pageable)
-    @Operation(summary = "Get some of the brands")
-    @ApiResponse(responseCode = "200", description = "Successfully retrieved a page of the brands")
-    @GetMapping("/")
-    public ResponseEntity<Page<BrandRequest>> getBrands(@RequestParam(value = "page", defaultValue = "0") int page,
-                                                        @RequestParam(value = "size", defaultValue = "10") int size,
-                                                        @RequestParam(value = "sort", defaultValue = "name,asc") String sort){
-        String[] sortParams = sort.split(",");
-        String sortBy = sortParams[0];
-        Sort.Direction direction = sortParams.length > 1 ? Sort.Direction.fromString(sortParams[1]) : Sort.Direction.ASC;
-        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
-        return new ResponseEntity<>(brandHandler.getAllBrands(pageable), HttpStatus.OK);
-    }
-
-    // get BY ID
-
     @GetMapping("/{id}")
     public ResponseEntity<BrandRequest> getBrandById(@PathVariable Long id) {
         return new ResponseEntity<>(brandHandler.getBrandById(id), HttpStatus.OK);
     }
-
-
 
 
 
@@ -77,9 +56,27 @@ public class BrandRestController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    // get all (pageable)
+    @Operation(summary = "Get some of the brands")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved a page of the brands")
+    @GetMapping("/paged")
+    public ResponseEntity<Page<BrandRequest>> getBrandsPaged(@RequestParam(value = "page", defaultValue = "0") int page,
+                                                             @RequestParam(value = "size", defaultValue = "10") int size,
+                                                             @RequestParam(value = "sort", defaultValue = "name,asc") String sort){
+        String[] sortParams = sort.split(",");
+        String sortBy = sortParams[0];
+        Sort.Direction direction = sortParams.length > 1 ? Sort.Direction.fromString(sortParams[1]) : Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
+        return new ResponseEntity<>(brandHandler.getAllBrandsPaged(pageable), HttpStatus.OK);
+    }
 
-
-
+    //get everything
+    @Operation(summary = "Get all brands")
+    @ApiResponse(responseCode = "200", description = "gets the whole rows of brands")
+    @GetMapping("/")
+    public ResponseEntity<List<BrandRequest>> getAllBrands(){
+        return new ResponseEntity<>(brandHandler.getAllBrands(), HttpStatus.OK);
+    }
 
 
 }

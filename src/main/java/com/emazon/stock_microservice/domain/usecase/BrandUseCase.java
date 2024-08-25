@@ -6,10 +6,11 @@ import com.emazon.stock_microservice.domain.spi.IBrandPersistencePort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-//  >>> ServicePort
+import java.util.List;
+
+//  >>> ServicePort in the DOMAIN
 public class BrandUseCase  implements IBrandServicePort {
 
-    // the 'final' makes the class inherently immutable, preventing potential issues related to concurrent modifications and ensuring thread safety.
     private final IBrandPersistencePort brandPersistencePort; //
 
     // Persistence port
@@ -20,11 +21,6 @@ public class BrandUseCase  implements IBrandServicePort {
     @Override
     public void saveBrand(Brand brand) {
         this.brandPersistencePort.saveBrand(brand);
-    }
-
-    @Override
-    public Page<Brand> getAllBrands(Pageable pageable) {
-        return brandPersistencePort.getAllBrands(pageable);
     }
 
     @Override
@@ -42,5 +38,13 @@ public class BrandUseCase  implements IBrandServicePort {
         brandPersistencePort.deleteBrand(id);
     }
 
+    @Override
+    public Page<Brand> getAllBrandsPaged(Pageable pageable) {
+        return brandPersistencePort.getAllBrandsPaged(pageable);
+    }
 
+    @Override
+    public List<Brand> getAllBrands() {
+        return brandPersistencePort.getAllBrands();
+    }
 }
