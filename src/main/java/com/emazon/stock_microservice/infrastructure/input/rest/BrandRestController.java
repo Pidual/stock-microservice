@@ -1,16 +1,13 @@
 package com.emazon.stock_microservice.infrastructure.input.rest;
 
 
-import com.emazon.stock_microservice.application.dto.BrandRequest;
+import com.emazon.stock_microservice.application.dto.BrandDTO;
 import com.emazon.stock_microservice.application.handler.IBrandHandler;
-import com.emazon.stock_microservice.infrastructure.output.jpa.entity.BrandEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,58 +22,48 @@ public class BrandRestController {
 
     private final IBrandHandler brandHandler;
 
+    // get all (pageable)
+    @Operation(summary = "Get some a page of the brands")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved a page of the brands" )
+    @GetMapping("/paged")
+    public ResponseEntity<Page<BrandDTO>> getBrandsPaged(Pageable pageable) {
+        Page<BrandDTO> brands = brandHandler.getAllBrandsPaged(pageable);
+        return new ResponseEntity<>(brands, HttpStatus.OK);
+    }
+
     // Create POST
     @Operation(summary = "Adds a new brand")
-    @ApiResponse(responseCode = "201", description = "Brand created succesfully")
+    @ApiResponse(responseCode = "201", description = "Brand created successfully")
     @PostMapping("/")
-    public ResponseEntity<Void> addBrand(@RequestBody BrandRequest brandRequest){
-        brandHandler.saveBrand(brandRequest);
+    public ResponseEntity<Void> addBrand(@RequestBody BrandDTO brandDTO){
+        brandHandler.saveBrand(brandDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<BrandRequest> getBrandById(@PathVariable Long id) {
-        return new ResponseEntity<>(brandHandler.getBrandById(id), HttpStatus.OK);
+    @GetMapping("/{brandName}")
+    public ResponseEntity<BrandDTO> getBrand(@PathVariable String brandName) {
+        return new ResponseEntity<>(brandHandler.getBrand(brandName), HttpStatus.OK);
     }
-
-
 
     // Update PUT/PATCH
     @PutMapping("/")
-    public ResponseEntity<Void> updateBrand(@RequestBody BrandRequest brandRequest){
-        brandHandler.updateBrand(brandRequest);
+    public ResponseEntity<Void> updateBrand(@RequestBody BrandDTO brandDTO){
+        brandHandler.updateBrand(brandDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 
     // Delete DELETE
     @DeleteMapping()
-    public ResponseEntity<Void> deleteBrand(@RequestBody BrandRequest brandRequest){
-        brandHandler.deleteBrand(brandRequest);
+    public ResponseEntity<Void> deleteBrand(@RequestBody BrandDTO brandDTO){
+        brandHandler.deleteBrand(brandDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    // get all (pageable)
-    @Operation(summary = "Get some of the brands")
-    @ApiResponse(responseCode = "200", description = "Successfully retrieved a page of the brands")
-    @GetMapping("/paged")
-    public ResponseEntity<Page<BrandRequest>> getBrandsPaged(@RequestParam(value = "page", defaultValue = "0") int page,
-                                                             @RequestParam(value = "size", defaultValue = "10") int size,
-                                                             @RequestParam(value = "sort", defaultValue = "name,asc") String sort){
-        String[] sortParams = sort.split(",");
-        String sortBy = sortParams[0];
-        Sort.Direction direction = sortParams.length > 1 ? Sort.Direction.fromString(sortParams[1]) : Sort.Direction.ASC;
-        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
-        return new ResponseEntity<>(brandHandler.getAllBrandsPaged(pageable), HttpStatus.OK);
     }
 
     //get everything
     @Operation(summary = "Get all brands")
     @ApiResponse(responseCode = "200", description = "gets the whole rows of brands")
     @GetMapping("/")
-    public ResponseEntity<List<BrandRequest>> getAllBrands(){
+    public ResponseEntity<List<BrandDTO>> getAllBrands(){
         return new ResponseEntity<>(brandHandler.getAllBrands(), HttpStatus.OK);
     }
-
-
 }

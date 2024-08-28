@@ -3,8 +3,10 @@ package com.emazon.stock_microservice.domain.usecase;
 import com.emazon.stock_microservice.domain.api.ICategoryServicePort;
 import com.emazon.stock_microservice.domain.model.Category;
 import com.emazon.stock_microservice.domain.spi.ICategoryPersistencePort;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
+import com.emazon.stock_microservice.domain.util.pageable.PageableUtil;
+
 
 import java.util.List;
 
@@ -24,8 +26,9 @@ public class CategoryUseCase implements ICategoryServicePort {
     }
 
     @Override
-    public Page<Category> getAllCategoriesPaged(Pageable pageable) {
-        return categoryPersistencePort.getAllCategoriesPaged(pageable);
+    public CustomPage<Category> getAllCategoriesPaged(CustomPageRequest customPageRequest) {
+        List<Category> allCategories = categoryPersistencePort.getAllCategories();
+        return PageableUtil.paginateAndSort(allCategories,customPageRequest, Category::getName);
     }
 
     @Override

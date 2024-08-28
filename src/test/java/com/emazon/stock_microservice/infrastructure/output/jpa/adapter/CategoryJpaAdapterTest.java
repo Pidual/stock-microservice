@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*; //this is for verify and times
 
 
-class CategoryJpaAdapterTest {
+class   CategoryJpaAdapterTest {
 
     @Mock
     private ICategoryRepository categoryRepository;

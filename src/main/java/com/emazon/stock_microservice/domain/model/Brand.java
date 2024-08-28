@@ -6,6 +6,7 @@ public class Brand {
     private String name;
     private String description;
 
+    // Constructors, getters, setters, and business logic methods
 
     public Brand(Long id, String description, String name) {
         this.id = id;

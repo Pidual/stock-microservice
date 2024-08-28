@@ -4,18 +4,22 @@ import com.emazon.stock_microservice.domain.model.Brand;
 import com.emazon.stock_microservice.domain.spi.IBrandPersistencePort;
 import com.emazon.stock_microservice.infrastructure.exceptions.brand_expections.BrandAlreadyExistsException;
 import com.emazon.stock_microservice.infrastructure.exceptions.brand_expections.BrandNotFoundException;
-import com.emazon.stock_microservice.infrastructure.exceptions.category_expetions.CategoryAlreadyExistsException;
 import com.emazon.stock_microservice.infrastructure.exceptions.category_expetions.InvalidCategoryException;
 import com.emazon.stock_microservice.infrastructure.exceptions.NoDataException;
 import com.emazon.stock_microservice.infrastructure.output.jpa.entity.BrandEntity;
 import com.emazon.stock_microservice.infrastructure.output.jpa.mapper.BrandEntityMapper;
 import com.emazon.stock_microservice.infrastructure.output.jpa.repository.IBrandRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
+
+/**
+ * que clase es esta? Implementa IBrandPersistencePort que esta en el dominio
+ * Esta clase hace parte de la INFRAESTRUCTURA
+ * Utiliza brandRepository
+ * Utiliza brandMapper (este es para transformar objetos)
+ */
 
 @RequiredArgsConstructor
 public class BrandJpaAdapter implements IBrandPersistencePort {
@@ -48,19 +52,15 @@ public class BrandJpaAdapter implements IBrandPersistencePort {
     }
 
     @Override
-    public Brand getBrand(Long id) {
-        return brandEntityMapper.toBrand(brandRepository.findById(id).orElseThrow(BrandNotFoundException::new));
-    }
-
-    @Override
-    public Brand getBrandByName(String brandName) {
+    public Brand getBrand(String brandName) {
         return brandEntityMapper.toBrand(brandRepository.findByName(brandName).orElseThrow(BrandNotFoundException::new));
     }
 
 
     @Override
-    public void deleteBrand(Long id) {
-        brandRepository.deleteById(id);
+    public void deleteBrand(String brandName) {
+        BrandEntity brandToDelete = brandRepository.findByName(brandName).orElseThrow(BrandNotFoundException::new);
+        brandRepository.delete(brandToDelete);
     }
 
     @Override
@@ -71,16 +71,6 @@ public class BrandJpaAdapter implements IBrandPersistencePort {
     }
 
     @Override
-    public Page<Brand> getAllBrandsPaged(Pageable pageable) {
-        Page<BrandEntity> brandEntityPage = brandRepository.findAll(pageable);
-
-        if (brandEntityPage.isEmpty()) {
-            throw new NoDataException();
-        }
-        return brandEntityPage.map(brandEntityMapper::toBrand);
-    }
-
-    @Override
     public List<Brand> getAllBrands() {
         List<BrandEntity> brandEntityList = brandRepository.findAll();
         if(brandEntityList.isEmpty()){
@@ -88,6 +78,7 @@ public class BrandJpaAdapter implements IBrandPersistencePort {
         }
         return brandEntityMapper.toBrandList(brandEntityList);
     }
+
 
 
 }

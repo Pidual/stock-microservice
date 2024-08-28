@@ -1,9 +1,13 @@
 package com.emazon.stock_microservice.application.handler;
 
-import com.emazon.stock_microservice.application.dto.BrandRequest;
+import com.emazon.stock_microservice.application.dto.BrandDTO;
 import com.emazon.stock_microservice.application.mapper.BrandRequestMapper;
+import com.emazon.stock_microservice.application.mapper.PageMapper;
 import com.emazon.stock_microservice.domain.api.IBrandServicePort;
 import com.emazon.stock_microservice.domain.model.Brand;
+
+import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -11,7 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Que es esta clase?
@@ -27,46 +30,57 @@ import java.util.stream.Collectors;
 @Transactional
 public class BrandHandler implements IBrandHandler {
 
-    private final IBrandServicePort brandServicePort;
-    private final BrandRequestMapper brandRequestMapper;
+    private final IBrandServicePort brandUseCase; // useCase
+    private final BrandRequestMapper brandRequestMapper; // mapper
 
+    //raid boss method special thanks to ian for the help
     @Override
-    public void saveBrand(BrandRequest brandRequest) {
-        Brand brand = brandRequestMapper.toBrand(brandRequest);
-        brandServicePort.saveBrand(brand);
-    }
-
-    public void updateBrand(BrandRequest brandRequest) {
-        Brand existingBrand = brandServicePort.getBrandById(brandRequest.getId());
-        existingBrand.setName(brandRequest.getName()); //Changes the name
-        existingBrand.setDescription(brandRequest.getDescription()); //Changes the description
-        brandServicePort.updateBrand(existingBrand); //saves the changes
-    }
-
-    @Override
-    public void deleteBrand(BrandRequest brandRequest) {
-        brandServicePort.deleteBrandById(brandRequest.getId());
+    public Page<BrandDTO> getAllBrandsPaged(Pageable pageable) {
+       // de page.spring a page.domain
+        CustomPageRequest  customPageRequest = new CustomPageRequest(pageable.getPageNumber(),pageable.getPageSize(),pageable.getSort().isSorted());
+        // get all the brands from the domain in page.domain format
+        CustomPage<Brand> customPage = brandUseCase.getAllBrandsPaged(customPageRequest);
+        // then coverts from page.domain to page.spring
+        return PageMapper.toSpringPage(
+                new CustomPage<>(customPage.getContent().stream().map(brandRequestMapper::toBrandRequest).toList(),
+                        customPage.getTotalElements(),
+                        customPage.getTotalPages(),
+                        customPage.getCurrentPage(),
+                        customPage.isAscending()));
     }
 
     @Override
-    public BrandRequest getBrandById(Long id) {
-        return null;
+    public void saveBrand(BrandDTO brandDTO) {
+        Brand brand = brandRequestMapper.toBrand(brandDTO);
+        brandUseCase.saveBrand(brand);
     }
 
-    //this is paged
-    @Override
-    public Page<BrandRequest> getAllBrandsPaged(Pageable pageable) {
-        return brandServicePort.getAllBrandsPaged(pageable).map(brandRequestMapper::toBrandRequest);
+    public void updateBrand(BrandDTO brandDTO) {
+        Brand existingBrand = brandUseCase.getBrand(brandDTO.getName());
+        existingBrand.setName(brandDTO.getName()); //Changes the name
+        existingBrand.setDescription(brandDTO.getDescription()); //Changes the description
+        brandUseCase.updateBrand(existingBrand); //saves the changes
     }
+
+    @Override
+    public void deleteBrand(BrandDTO brandDTO) {
+        brandUseCase.deleteBrand(brandDTO.getName());
+    }
+
+    @Override
+    public BrandDTO getBrand(String brandName) {
+        return brandRequestMapper.toBrandRequest(brandUseCase.getBrand(brandName));
+    }
+
 
     // .stream(): This converts the list of brand requests into a stream, which provides a convenient way to perform operations on the elements.
     // .map(brandRequestMapper::toBrandRequest): This applies the toBrandRequest method from the brandRequestMapper object to each element in the stream.
     // .collect(Collectors.toList()): This collects the transformed brand requests into a new list and returns it.
     @Override
-    public List<BrandRequest> getAllBrands() {
-        return brandServicePort.getAllBrands()
+    public List<BrandDTO> getAllBrands() {
+        return brandUseCase.getAllBrands()
                 .stream()
-                .map(brandRequestMapper::toBrandRequest).collect(Collectors.toList());
+                .map(brandRequestMapper::toBrandRequest).toList();
     }
 
 

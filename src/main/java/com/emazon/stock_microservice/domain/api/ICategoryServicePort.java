@@ -1,6 +1,8 @@
 package com.emazon.stock_microservice.domain.api;
 
 import com.emazon.stock_microservice.domain.model.Category;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -22,6 +24,6 @@ public interface ICategoryServicePort {
 
     List<Category> getAllCategories();
 
-    Page<Category> getAllCategoriesPaged(Pageable pageable); //GET
+    CustomPage<Category> getAllCategoriesPaged(CustomPageRequest customPageRequest); //GET
 
  }
