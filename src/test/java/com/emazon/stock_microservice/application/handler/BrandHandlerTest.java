@@ -24,11 +24,12 @@ import static org.mockito.Mockito.*;
 
 class BrandHandlerTest {
 
+    // !! NO COLOCAR FINAL EN LOS @MOCKS !!
     @Mock //mock es para laas clases que pide el handler
-    private final IBrandServicePort brandUseCase; // useCase
+    private IBrandServicePort brandUseCase; // useCase
 
     @Mock //mock es para las clases que usa la clase que estamos probando
-    private final BrandRequestMapper brandRequestMapper; // mapper
+    private BrandRequestMapper brandRequestMapper; // mapper
 
     @InjectMocks // injectMocks es para injectar la clase que se esta probando
     private BrandHandler brandHandler;

@@ -1,4 +1,4 @@
-package com.emazon.stock_microservice.infrastructure.exceptions;
+package com.emazon.stock_microservice.domain.exceptions;
 
 public class NoDataException extends RuntimeException{
 

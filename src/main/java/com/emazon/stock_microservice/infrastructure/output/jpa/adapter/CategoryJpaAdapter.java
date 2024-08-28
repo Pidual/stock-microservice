@@ -2,10 +2,10 @@ package com.emazon.stock_microservice.infrastructure.output.jpa.adapter;
 
 import com.emazon.stock_microservice.domain.model.Category;
 import com.emazon.stock_microservice.domain.spi.ICategoryPersistencePort;
-import com.emazon.stock_microservice.infrastructure.exceptions.category_expetions.CategoryAlreadyExistsException;
-import com.emazon.stock_microservice.infrastructure.exceptions.category_expetions.CategoryNotFoundException;
-import com.emazon.stock_microservice.infrastructure.exceptions.category_expetions.InvalidCategoryException;
-import com.emazon.stock_microservice.infrastructure.exceptions.NoDataException;
+import com.emazon.stock_microservice.domain.exceptions.category_expetions.CategoryAlreadyExistsException;
+import com.emazon.stock_microservice.domain.exceptions.category_expetions.CategoryNotFoundException;
+import com.emazon.stock_microservice.domain.exceptions.category_expetions.InvalidCategoryException;
+import com.emazon.stock_microservice.domain.exceptions.NoDataException;
 import com.emazon.stock_microservice.infrastructure.output.jpa.entity.CategoryEntity;
 import com.emazon.stock_microservice.infrastructure.output.jpa.mapper.CategoryEntityMapper;
 import com.emazon.stock_microservice.infrastructure.output.jpa.repository.ICategoryRepository;
