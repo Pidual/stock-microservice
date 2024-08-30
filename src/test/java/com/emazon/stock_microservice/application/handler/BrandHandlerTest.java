@@ -5,7 +5,6 @@ import com.emazon.stock_microservice.application.mapper.BrandRequestMapper;
 import com.emazon.stock_microservice.domain.api.IBrandServicePort;
 import com.emazon.stock_microservice.domain.model.Brand;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
-import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -43,19 +42,21 @@ class BrandHandlerTest {
 
     @BeforeEach //is used to signal that the annotated method should be executed before each test
     void setUp() {
-        //Configura los mocks necesarios usando ⬇️
+        //Configure the necessary mocks
         MockitoAnnotations.openMocks(this);
-        // Inicializar objetos comunes para los tests
+        // Initialize common objets for test
         brand1 = new Brand(1L, "testBrand1", "Description1");
         brand2 = new Brand(2L, "testBrand2", "Description2");
+
         brandDTO1 = new BrandDTO("testBrand1", "Description1");
         brandDTO2 = new BrandDTO("testBrand2", "Description2");
+
         brands = Arrays.asList(brand1, brand2);
         customPage = new CustomPage<>(brands, brands.size(), 1, 0, true);
     }
 
     @Test
-    void testGetAllBrandsPaged() {
+    void testFindAllBrandsPaged() {
         Pageable pageable = PageRequest.of(0, 5);
 
         when(brandUseCase.getAllBrandsPaged(any())).thenReturn(customPage);
@@ -93,6 +94,7 @@ class BrandHandlerTest {
 
 
     //Verifica que deleteBrand invoque el método correspondiente en la capa de dominio.
+
     @Test
     void testDeleteBrand() {
         BrandDTO brandDTO = new BrandDTO("Brand1", "Description1");
@@ -106,19 +108,21 @@ class BrandHandlerTest {
     //Asegura que se pueda recuperar una marca específica.
     @Test
     void testGetBrand() {
+
         when(brandUseCase.getBrand("testBrand1")).thenReturn(brand1);
         when(brandRequestMapper.toBrandRequest(brand1)).thenReturn(brandDTO1);
         BrandDTO result = brandHandler.getBrand("testBrand1");
         assertEquals(brandDTO1, result);
+
     }
 
     @Test
-    void testGetAllBrands() {
+    void testFindAllBrands() {
         when(brandUseCase.getAllBrands()).thenReturn(brands);
         when(brandRequestMapper.toBrandRequest(brand1)).thenReturn(brandDTO1);
         when(brandRequestMapper.toBrandRequest(brand2)).thenReturn(brandDTO2);
 
-        List<BrandDTO> result = brandHandler.getAllBrands();
+        List<BrandDTO> result = brandHandler.findAllBrands();
 
         assertEquals(2, result.size());
         assertEquals(brandDTO1, result.get(0));

@@ -5,55 +5,47 @@ import com.emazon.stock_microservice.domain.model.Category;
 import com.emazon.stock_microservice.domain.spi.ICategoryPersistencePort;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
-import com.emazon.stock_microservice.domain.util.pageable.PageableUtil;
-
 
 import java.util.List;
 
-
+//TODO: ADD VERIFICATIONS IN THIS CLASS
 public class CategoryUseCase implements ICategoryServicePort {
 
-
-    private final ICategoryPersistencePort categoryPersistencePort;
+    private final ICategoryPersistencePort categoryJpaAdapter;
 
     public CategoryUseCase(ICategoryPersistencePort categoryPersistencePort) {
-        this.categoryPersistencePort = categoryPersistencePort;
-    }
-
-    @Override
-    public void saveCategory(Category category) {
-        this.categoryPersistencePort.saveCategory(category);
-    }
-
-    @Override
-    public CustomPage<Category> getAllCategoriesPaged(CustomPageRequest customPageRequest) {
-        List<Category> allCategories = categoryPersistencePort.getAllCategories();
-        return PageableUtil.paginateAndSort(allCategories,customPageRequest, Category::getName);
+        this.categoryJpaAdapter = categoryPersistencePort;
     }
 
     @Override
     public List<Category> getAllCategories() {
-        return categoryPersistencePort.getAllCategories();
-    }
-
-
-    @Override
-    public Category getCategoryById(Long categoryId) {
-        return categoryPersistencePort.getCategory(categoryId);
+        return categoryJpaAdapter.getAllCategories();
     }
 
     @Override
-    public Category getCategoryByName(String categoryName) {
-        return categoryPersistencePort.getCategoryByName(categoryName);
+    public CustomPage<Category> getAllCategoriesPaged(CustomPageRequest customPageRequest) {
+        return categoryJpaAdapter.getCategoriesForPagination(customPageRequest);
     }
 
     @Override
-    public void deleteCategoryById(Long categoryId) {
-        categoryPersistencePort.deleteCategory(categoryId);
+    public Category getCategory(String categoryName) {
+        return categoryJpaAdapter.getCategory(categoryName);
+    }
+
+    @Override
+    public void saveCategory(Category category) {
+        this.categoryJpaAdapter.saveCategory(category);
     }
 
     @Override
     public void updateCategory(Category category) {
-        categoryPersistencePort.updateCategory(category);
+        categoryJpaAdapter.updateCategory(category);
     }
+
+    @Override
+    public void deleteCategoryById(Long categoryId) {
+        categoryJpaAdapter.deleteCategory(categoryId);
+    }
+
+
 }

@@ -8,7 +8,8 @@ import com.emazon.stock_microservice.domain.model.Brand;
 
 import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,24 +17,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Que es esta clase?
- * es una parte de la capa aplication
- * ESTA CLASE ACTUA COMO INTERMEDIARIO ENTRE LA CAPA DE DOMINIO
- * Y LAS INTERFACES EXTERNAS
- * brandServicePort: es el use case que tenemos en el dominio
- * brandRequestMapper: es un mapper que transforma de Request a Objeto
- */
-
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class BrandHandler implements IBrandHandler {
 
-    private final IBrandServicePort brandUseCase; // useCase
-    private final BrandRequestMapper brandRequestMapper; // mapper
+    private final IBrandServicePort brandUseCase;
+    private final BrandRequestMapper brandRequestMapper;
 
-    //raid boss method special thanks to ian for the help
     @Override
     public Page<BrandDTO> getAllBrandsPaged(Pageable pageable) {
        // de page.spring a page.domain
@@ -77,7 +68,8 @@ public class BrandHandler implements IBrandHandler {
     // .map(brandRequestMapper::toBrandRequest): This applies the toBrandRequest method from the brandRequestMapper object to each element in the stream.
     // .collect(Collectors.toList()): This collects the transformed brand requests into a new list and returns it.
     @Override
-    public List<BrandDTO> getAllBrands() {
+    @Transactional(readOnly = true) // for more performance
+    public List<BrandDTO> findAllBrands() {
         return brandUseCase.getAllBrands()
                 .stream()
                 .map(brandRequestMapper::toBrandRequest).toList();

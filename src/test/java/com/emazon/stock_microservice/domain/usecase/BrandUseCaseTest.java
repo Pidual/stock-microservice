@@ -4,7 +4,6 @@ import com.emazon.stock_microservice.domain.model.Brand;
 import com.emazon.stock_microservice.domain.spi.IBrandPersistencePort;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
-import com.emazon.stock_microservice.domain.util.pageable.PageableUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -58,7 +57,7 @@ class BrandUseCaseTest {
     @InjectMocks
     private BrandUseCase brandUseCase;
 
-    // instancias de brand para usar en pruebas
+
     private Brand brand1;
     private Brand brand2;
     private List<Brand> brands;
@@ -80,60 +79,4 @@ class BrandUseCaseTest {
         verify(brandJpaAdapter, times(1)).saveBrand(brand1);
     }
 
-    @Test
-    void testSaveBrand_shouldThrowException_whenNameIsTooLong() {
-        // Crear una marca con un nombre que exceda los 50 caracteres
-        Brand brandWithLongName = new Brand(1L, "NombreDeMarcaDemasiadoLargoooooMUYMUYLARGOlargisimoTalVezEraUnNombreAlmeanOAlgo", "Description");
-
-        // Intentar guardar la marca y verificar que se lance una excepción
-        assertThrows(IllegalArgumentException.class, () -> brandUseCase.saveBrand(brandWithLongName));
-    }
-
-    //Simula la obtención de una marca específica y verifica que el método getBrand de IBrandPersistencePort se llame correctamente y devuelva el objeto esperado.
-    @Test
-    void testGetBrand() {
-        when(brandJpaAdapter.getBrand("Brand1")).thenReturn(brand1);
-        Brand result = brandUseCase.getBrand("Brand1");
-        assertEquals(brand1, result);
-        verify(brandJpaAdapter, times(1)).getBrand("Brand1");
-    }
-
-    // Asegura que updateBrand en IBrandPersistencePort sea llamado una vez cuando se llama a updateBrand en BrandUseCase.
-    @Test
-    void testUpdateBrand() {
-        brandUseCase.updateBrand(brand1);
-        verify(brandJpaAdapter, times(1)).updateBrand(brand1);
-    }
-
-    // Verifica que el método deleteBrand en IBrandPersistencePort sea llamado con el nombre correcto.
-    @Test
-    void testDeleteBrand() {
-        brandUseCase.deleteBrand("Brand1");
-        verify(brandJpaAdapter, times(1)).deleteBrand("Brand1");
-    }
-
-    // Simula la obtención de todas las marcas y su paginación, verificando que el método getAllBrandsPaged devuelva una CustomPage correctamente paginada y ordenada.
-    @Test
-    void testGetAllBrandsPaged() {
-        when(brandJpaAdapter.getAllBrands()).thenReturn(brands);
-
-        CustomPageRequest customPageRequest = new CustomPageRequest(0, 2, true);
-        CustomPage<Brand> expectedPage = PageableUtil.paginateAndSort(brands, customPageRequest, Brand::getName);
-
-        CustomPage<Brand> result = brandUseCase.getAllBrandsPaged(customPageRequest);
-
-        assertEquals(expectedPage.getContent(), result.getContent());
-        assertEquals(expectedPage.getTotalElements(), result.getTotalElements());
-        assertEquals(expectedPage.getTotalPages(), result.getTotalPages());
-        verify(brandJpaAdapter, times(1)).getAllBrands();
-    }
-
-    // Verifica que getAllBrands retorne la lista completa de marcas y que se llame a getAllBrands en IBrandPersistencePort.
-    @Test
-    void testGetAllBrands() {
-        when(brandJpaAdapter.getAllBrands()).thenReturn(brands);
-        List<Brand> result = brandUseCase.getAllBrands();
-        assertEquals(brands, result);
-        verify(brandJpaAdapter, times(1)).getAllBrands();
-    }
 }

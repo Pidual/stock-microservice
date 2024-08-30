@@ -14,8 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
 
 @Service
 @RequiredArgsConstructor
@@ -46,14 +44,14 @@ public class CategoryHandler implements ICategoryHandler {
     }
 
     @Override
-    public CategoryDTO getCategory(Long id) {
-        Category category = categoryUseCase.getCategoryById(id);
+    public CategoryDTO getCategory(String categoryName) {
+        Category category = categoryUseCase.getCategory(categoryName);
         return categoryRequestMapper.toCategoryRequest(category);
     }
 
     @Override
     public void updateCategory(CategoryDTO categoryDTO) {
-        Category existingCategory = categoryUseCase.getCategoryByName(categoryDTO.getName());
+        Category existingCategory = categoryUseCase.getCategory(categoryDTO.getName());
         existingCategory.setDescription(categoryDTO.getDescription());
         categoryUseCase.updateCategory(existingCategory);
     }

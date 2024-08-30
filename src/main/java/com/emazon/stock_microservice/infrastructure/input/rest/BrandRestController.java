@@ -64,6 +64,6 @@ public class BrandRestController {
     @ApiResponse(responseCode = "200", description = "gets the whole rows of brands")
     @GetMapping("/")
     public ResponseEntity<List<BrandDTO>> getAllBrands(){
-        return new ResponseEntity<>(brandHandler.getAllBrands(), HttpStatus.OK);
+        return new ResponseEntity<>(brandHandler.findAllBrands(), HttpStatus.OK);
     }
 }

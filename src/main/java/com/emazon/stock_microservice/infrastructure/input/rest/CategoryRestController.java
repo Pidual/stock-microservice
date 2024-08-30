@@ -50,11 +50,11 @@ public class CategoryRestController {
     }
 
 
-    @Operation(summary = "Get a category by the id")
+    @Operation(summary = "Get a category by the name")
     @ApiResponse(responseCode = "200", description = "Successfully retrieved a category by its id")
-    @GetMapping("/{id}")
-    public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id) {
-        return new ResponseEntity<>(categoryHandler.getCategory(id), HttpStatus.OK);
+    @GetMapping("/{categoryName}")
+    public ResponseEntity<CategoryDTO> getCategory(@PathVariable String categoryName) {
+        return new ResponseEntity<>(categoryHandler.getCategory(categoryName), HttpStatus.OK);
     }
 
 

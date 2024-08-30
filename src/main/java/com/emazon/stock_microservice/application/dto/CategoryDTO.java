@@ -10,12 +10,11 @@ import lombok.Setter;
 
 public class CategoryDTO {
 
-    // Constructors, getters, setters, and validation annotations
-    @NotBlank
+    @NotBlank(message = "Brand name should not be blank.")
     @Size(min = 1, max = 50)
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Brand description should not be blank  .")
     @Size(min = 1, max = 90)
     private String description;
 

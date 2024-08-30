@@ -9,12 +9,10 @@ import com.emazon.stock_microservice.domain.model.Brand;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
 import com.emazon.stock_microservice.domain.spi.IBrandPersistencePort;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
-import com.emazon.stock_microservice.domain.util.pageable.PageableUtil;
-
 
 import java.util.List;
 
-//  >>> ServicePort in the DOMAIN
+
 public class BrandUseCase  implements IBrandServicePort {
 
     private final IBrandPersistencePort brandJpaAdapter; //brandJpa !!!
@@ -25,27 +23,39 @@ public class BrandUseCase  implements IBrandServicePort {
     private static final String NOT_FOUND_ERROR = "No encontrada";
 
 
-    // Persistence port
     public BrandUseCase(IBrandPersistencePort brandJpaAdapter) {
         this.brandJpaAdapter = brandJpaAdapter;
     }
 
     @Override
-    public void saveBrand(Brand brand) {
-        validateBrand(brand);
-        // Check if the brand already exists
-        if (brandJpaAdapter.getBrand(brand.getName()) != null) {
-            throw new AlreadyExistsException(ALREADY_EXITS_ERROR);
+    public List<Brand> getAllBrands() {
+        List<Brand> allBrands = brandJpaAdapter.getAllBrands();
+        if(allBrands == null || allBrands.isEmpty()) {
+            throw new NoDataException();
         }
-        this.brandJpaAdapter.saveBrand(brand);
+        return allBrands;
+    }
+
+    @Override
+    public CustomPage<Brand> getAllBrandsPaged(CustomPageRequest customPageRequest) {
+        return brandJpaAdapter.getBrandsForPagination(customPageRequest);
     }
 
     @Override
     public Brand getBrand(String name) {
         if(brandJpaAdapter.getBrand(name) == null) {
-            throw new WrongNameException(WRONG_NAME_ERROR);
+            throw new WrongNameException(NOT_FOUND_ERROR);
         }
         return brandJpaAdapter.getBrand(name);
+    }
+
+    @Override
+    public void saveBrand(Brand brand) {
+        validateBrand(brand);
+        if (brandJpaAdapter.getBrand(brand.getName()) != null) {
+            throw new AlreadyExistsException(ALREADY_EXITS_ERROR);
+        }
+        this.brandJpaAdapter.saveBrand(brand);
     }
 
     @Override
@@ -58,23 +68,6 @@ public class BrandUseCase  implements IBrandServicePort {
     public void deleteBrand(String name) {
         brandJpaAdapter.deleteBrand(name);
     }
-
-    @Override
-    public CustomPage<Brand> getAllBrandsPaged(CustomPageRequest customPageRequest) {
-        List<Brand> allBrands = brandJpaAdapter.getAllBrands();
-        return PageableUtil.paginateAndSort(allBrands, customPageRequest, Brand::getName);
-    }
-
-
-    @Override
-    public List<Brand> getAllBrands() {
-        List<Brand> allBrands = brandJpaAdapter.getAllBrands();
-        if(allBrands == null || allBrands.isEmpty()) {
-            throw new NoDataException();
-        }
-        return allBrands;
-    }
-
 
 
     public static void validateBrand(Brand brand) {

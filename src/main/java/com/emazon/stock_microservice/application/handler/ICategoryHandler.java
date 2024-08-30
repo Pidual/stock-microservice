@@ -11,7 +11,7 @@ public interface ICategoryHandler {
 
     void saveCategory(CategoryDTO category); // CREATE
 
-    CategoryDTO getCategory(Long id);  // GET
+    CategoryDTO getCategory(String categoryName);  // GET
 
     void updateCategory(CategoryDTO categoryDTO); // UPDATE
 

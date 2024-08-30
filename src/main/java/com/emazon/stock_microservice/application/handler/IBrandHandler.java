@@ -25,6 +25,6 @@ public interface IBrandHandler {
     Page<BrandDTO> getAllBrandsPaged(Pageable pageable);
 
 
-    List<BrandDTO> getAllBrands();
+    List<BrandDTO> findAllBrands();
 
 }

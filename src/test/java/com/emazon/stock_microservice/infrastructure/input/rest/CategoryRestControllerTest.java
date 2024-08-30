@@ -44,34 +44,24 @@ class CategoryRestControllerTest {
         verify(categoryHandler, times(1)).saveCategory(categoryDTO);
     }
 
-//    @Test
-//    void getAllCategories_ShouldReturnOkStatus() {
-//        //Arrange
-//
-//        // Act
-//        ResponseEntity<?> responseEntity = categoryRestController.getCategoriesPaged(0,3,"name,asc");
-//        // Assert
-//        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-//    }
 
     @Test
     void getCategoryById() {
         // Arrange
-        Long categoryId = 1L; // initializes with the value 1 and as a long
         CategoryDTO expectedCategory = new CategoryDTO(); // creates an instance
         expectedCategory.setName("Electronics"); // sets the name
         expectedCategory.setDescription("Devices and gadgets");
 
         //This line uses Mockito to mock the categoryHandler object. Any call to the getCategory method with any long value will return the expectedCategory object.
-        when(categoryHandler.getCategory(anyLong())).thenReturn(expectedCategory);
+        when(categoryHandler.getCategory(anyString())).thenReturn(expectedCategory);
 
         // Act Calls the actual controller method getCategoryById with the categoryId and stores the returned ResponseEntity in responseEntity.
-        ResponseEntity<CategoryDTO> responseEntity = categoryRestController.getCategoryById(categoryId);
+        ResponseEntity<CategoryDTO> responseEntity = categoryRestController.getCategory(expectedCategory.getName());
 
         // Assert
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(expectedCategory, responseEntity.getBody()); // Asserts that the body of the response is equal to the expectedCategory object.
-        verify(categoryHandler, times(1)).getCategory(categoryId); //Verifies that the categoryHandler.getCategory method was called exactly once with the specified categoryId.
+        verify(categoryHandler, times(1)).getCategory(expectedCategory.getName()); //Verifies that the categoryHandler.getCategory method was called exactly once with the specified categoryId.
     }
 
     @Test
