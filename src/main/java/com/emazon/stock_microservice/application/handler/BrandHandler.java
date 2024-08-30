@@ -63,16 +63,10 @@ public class BrandHandler implements IBrandHandler {
         return brandRequestMapper.toBrandRequest(brandUseCase.getBrand(brandName));
     }
 
-
-    // .stream(): This converts the list of brand requests into a stream, which provides a convenient way to perform operations on the elements.
-    // .map(brandRequestMapper::toBrandRequest): This applies the toBrandRequest method from the brandRequestMapper object to each element in the stream.
-    // .collect(Collectors.toList()): This collects the transformed brand requests into a new list and returns it.
     @Override
     @Transactional(readOnly = true) // for more performance
     public List<BrandDTO> findAllBrands() {
-        return brandUseCase.getAllBrands()
-                .stream()
-                .map(brandRequestMapper::toBrandRequest).toList();
+        return brandUseCase.getAllBrands().stream().map(brandRequestMapper::toBrandRequest).toList();
     }
 
 

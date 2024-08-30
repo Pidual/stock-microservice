@@ -7,7 +7,8 @@ import com.emazon.stock_microservice.domain.api.ICategoryServicePort;
 import com.emazon.stock_microservice.domain.model.Category;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -64,6 +65,7 @@ public class CategoryHandler implements ICategoryHandler {
 
 
     @Override
+    @Transactional(readOnly = true)
     public List<CategoryDTO> getAllCategories() {
         return categoryUseCase.getAllCategories().stream().map(categoryRequestMapper::toCategoryRequest).toList();
     }

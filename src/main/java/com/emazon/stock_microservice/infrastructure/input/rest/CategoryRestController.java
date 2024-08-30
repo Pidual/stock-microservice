@@ -2,18 +2,17 @@ package com.emazon.stock_microservice.infrastructure.input.rest;
 
 import com.emazon.stock_microservice.application.dto.CategoryDTO;
 import com.emazon.stock_microservice.application.handler.ICategoryHandler;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
+
 
 import java.util.List;
-
-// documentation here http://localhost:8090/swagger-ui/index.html
 
 @RestController
 @RequestMapping("/categories")

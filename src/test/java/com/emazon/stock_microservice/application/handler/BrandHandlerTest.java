@@ -3,8 +3,12 @@ package com.emazon.stock_microservice.application.handler;
 import com.emazon.stock_microservice.application.dto.BrandDTO;
 import com.emazon.stock_microservice.application.mapper.BrandRequestMapper;
 import com.emazon.stock_microservice.domain.api.IBrandServicePort;
+import com.emazon.stock_microservice.domain.exceptions.AlreadyExistsException;
+import com.emazon.stock_microservice.domain.exceptions.WrongDescriptionException;
+import com.emazon.stock_microservice.domain.exceptions.WrongNameException;
 import com.emazon.stock_microservice.domain.model.Brand;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -16,116 +20,127 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.Arrays;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-
 class BrandHandlerTest {
 
-    // !! NO COLOCAR FINAL EN LOS @MOCKS !!
-    @Mock //mock es para laas clases que pide el handler
-    private IBrandServicePort brandUseCase; // useCase
+    @Mock
+    private IBrandServicePort brandUseCase;
 
-    @Mock //mock es para las clases que usa la clase que estamos probando
-    private BrandRequestMapper brandRequestMapper; // mapper
+    @Mock
+    private BrandRequestMapper brandRequestMapper;
 
-    @InjectMocks // injectMocks es para injectar la clase que se esta probando
+    @InjectMocks
     private BrandHandler brandHandler;
 
-    private Brand brand1; //test brand 1
-    private Brand brand2; //test brand 2
-    private BrandDTO brandDTO1; // test dto1
-    private BrandDTO brandDTO2; //test dto2
-    private List<Brand> brands; // a list of brands containing testBrands
-    private CustomPage<Brand> customPage; // a CustomPage
-
-    @BeforeEach //is used to signal that the annotated method should be executed before each test
+    @BeforeEach
     void setUp() {
-        //Configure the necessary mocks
         MockitoAnnotations.openMocks(this);
-        // Initialize common objets for test
-        brand1 = new Brand(1L, "testBrand1", "Description1");
-        brand2 = new Brand(2L, "testBrand2", "Description2");
-
-        brandDTO1 = new BrandDTO("testBrand1", "Description1");
-        brandDTO2 = new BrandDTO("testBrand2", "Description2");
-
-        brands = Arrays.asList(brand1, brand2);
-        customPage = new CustomPage<>(brands, brands.size(), 1, 0, true);
     }
 
     @Test
-    void testFindAllBrandsPaged() {
-        Pageable pageable = PageRequest.of(0, 5);
-
-        when(brandUseCase.getAllBrandsPaged(any())).thenReturn(customPage);
-        when(brandRequestMapper.toBrandRequest(brand1)).thenReturn(brandDTO1);
-        when(brandRequestMapper.toBrandRequest(brand2)).thenReturn(brandDTO2);
-
+    void shouldGetAllBrandsPaged() {
+        Pageable pageable = PageRequest.of(0, 2);
+        Brand brand = new Brand(1L, "Brand1", "Description1");
+        BrandDTO brandDTO = new BrandDTO("Brand1", "Description1");
+        CustomPage<Brand> customPage = new CustomPage<>(List.of(brand), 1, 2, 0, true);
+        when(brandUseCase.getAllBrandsPaged(any(CustomPageRequest.class))).thenReturn(customPage);
+        when(brandRequestMapper.toBrandRequest(any(Brand.class))).thenReturn(brandDTO);
         Page<BrandDTO> result = brandHandler.getAllBrandsPaged(pageable);
-
-        assertEquals(2, result.getTotalElements());
-        assertEquals(brandDTO1, result.getContent().get(0));
-        assertEquals(brandDTO2, result.getContent().get(1));
+        assertEquals(1, result.getTotalPages());
+        assertEquals(1, result.getTotalElements());
+        verify(brandUseCase, times(1)).getAllBrandsPaged(any(CustomPageRequest.class));
     }
 
     @Test
-    void testSaveBrand() {
-        when(brandRequestMapper.toBrand(brandDTO1)).thenReturn(brand1);
-        brandHandler.saveBrand(brandDTO1);
-        verify(brandUseCase, times(1)).saveBrand(brand1);
+    void shouldSaveBrandSuccessfully() {
+        BrandDTO brandDTO = new BrandDTO("Brand1", "Description1");
+        Brand brand = new Brand(1L, "Brand1", "Description1");
+        when(brandRequestMapper.toBrand(any(BrandDTO.class))).thenReturn(brand);
+        brandHandler.saveBrand(brandDTO);
+        verify(brandUseCase, times(1)).saveBrand(brand);
     }
 
-
-    //Comprueba que updateBrand actualiza correctamente una marca existente.
     @Test
-    void testUpdateBrand() {
-        BrandDTO brandDTO = new BrandDTO("Brand1", "Updated Description");
-        Brand existingBrand = new Brand(1l,"Brand1", "Old Description");
+    void shouldThrowExceptionWhenSavingBrandWithEmptyName() {
+        BrandDTO brandDTO = new BrandDTO("", "Description1");
+        Brand brand = new Brand(1L, "", "Description1");
+        when(brandRequestMapper.toBrand(any(BrandDTO.class))).thenReturn(brand);
+        doThrow(new WrongNameException("Brand name is empty")).when(brandUseCase).saveBrand(brand);
+        assertThrows(WrongNameException.class, () -> brandHandler.saveBrand(brandDTO));
+        verify(brandUseCase, times(1)).saveBrand(any(Brand.class));
+    }
 
-        when(brandUseCase.getBrand("Brand1")).thenReturn(existingBrand);
+    @Test
+    void shouldThrowExceptionWhenSavingBrandWithEmptyDescription() {
+        BrandDTO brandDTO = new BrandDTO("Brand1", "");
+        Brand brand = new Brand(1L, "Brand1", "");
+        when(brandRequestMapper.toBrand(any(BrandDTO.class))).thenReturn(brand);
+        doThrow(new WrongDescriptionException("Brand description is empty")).when(brandUseCase).saveBrand(brand);
+        assertThrows(WrongDescriptionException.class, () -> brandHandler.saveBrand(brandDTO));
+        verify(brandUseCase, times(1)).saveBrand(any(Brand.class));
+    }
 
+    @Test
+    void shouldUpdateBrandSuccessfully() {
+        BrandDTO brandDTO = new BrandDTO("Brand1", "New Description");
+        Brand existingBrand = new Brand(1L, "Brand1", "Old Description");
+        when(brandUseCase.getBrand(brandDTO.getName())).thenReturn(existingBrand);
         brandHandler.updateBrand(brandDTO);
-
-        assertEquals("Updated Description", existingBrand.getDescription());
+        assertEquals("New Description", existingBrand.getDescription());
         verify(brandUseCase, times(1)).updateBrand(existingBrand);
     }
 
-
-    //Verifica que deleteBrand invoque el método correspondiente en la capa de dominio.
-
     @Test
-    void testDeleteBrand() {
+    void shouldDeleteBrandSuccessfully() {
         BrandDTO brandDTO = new BrandDTO("Brand1", "Description1");
 
         brandHandler.deleteBrand(brandDTO);
 
-        verify(brandUseCase, times(1)).deleteBrand("Brand1");
-    }
-
-
-    //Asegura que se pueda recuperar una marca específica.
-    @Test
-    void testGetBrand() {
-
-        when(brandUseCase.getBrand("testBrand1")).thenReturn(brand1);
-        when(brandRequestMapper.toBrandRequest(brand1)).thenReturn(brandDTO1);
-        BrandDTO result = brandHandler.getBrand("testBrand1");
-        assertEquals(brandDTO1, result);
-
+        verify(brandUseCase, times(1)).deleteBrand(brandDTO.getName());
     }
 
     @Test
-    void testFindAllBrands() {
-        when(brandUseCase.getAllBrands()).thenReturn(brands);
-        when(brandRequestMapper.toBrandRequest(brand1)).thenReturn(brandDTO1);
-        when(brandRequestMapper.toBrandRequest(brand2)).thenReturn(brandDTO2);
+    void shouldGetBrandSuccessfully() {
+        Brand brand = new Brand(1L, "Brand1", "Description1");
+        BrandDTO brandDTO = new BrandDTO("Brand1", "Description1");
+
+        when(brandUseCase.getBrand("Brand1")).thenReturn(brand);
+        when(brandRequestMapper.toBrandRequest(brand)).thenReturn(brandDTO);
+
+        BrandDTO result = brandHandler.getBrand("Brand1");
+
+        assertEquals(brandDTO, result);
+        verify(brandUseCase, times(1)).getBrand("Brand1");
+    }
+
+    @Test
+    void shouldFindAllBrandsSuccessfully() {
+        Brand brand = new Brand(1L, "Brand1", "Description1");
+        BrandDTO brandDTO = new BrandDTO("Brand1", "Description1");
+
+        when(brandUseCase.getAllBrands()).thenReturn(Arrays.asList(brand));
+        when(brandRequestMapper.toBrandRequest(brand)).thenReturn(brandDTO);
 
         List<BrandDTO> result = brandHandler.findAllBrands();
 
-        assertEquals(2, result.size());
-        assertEquals(brandDTO1, result.get(0));
-        assertEquals(brandDTO2, result.get(1));
+        assertEquals(1, result.size());
+        verify(brandUseCase, times(1)).getAllBrands();
     }
+
+    @Test
+    void shouldThrowExceptionWhenSavingExistingBrand() {
+        BrandDTO brandDTO = new BrandDTO("ExistingBrand", "Description");
+        Brand existingBrand = new Brand(1L, "ExistingBrand", "Description");
+
+        when(brandRequestMapper.toBrand(any(BrandDTO.class))).thenReturn(existingBrand);
+        doThrow(new AlreadyExistsException("Brand already exists")).when(brandUseCase).saveBrand(existingBrand);
+
+        assertThrows(AlreadyExistsException.class, () -> brandHandler.saveBrand(brandDTO));
+        verify(brandUseCase, times(1)).saveBrand(existingBrand);
+    }
+
 }
