@@ -1,6 +1,6 @@
 package com.emazon.stock_microservice.application.mapper;
 
-import com.emazon.stock_microservice.application.dto.CategoryRequest;
+import com.emazon.stock_microservice.application.dto.CategoryDTO;
 import com.emazon.stock_microservice.domain.model.Category;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,11 +13,11 @@ public interface CategoryRequestMapper {
 
     @Mapping(source = "name", target = "name")
     @Mapping(source = "description", target = "description")
-    Category toCategory(CategoryRequest categoryRequest);
+    Category toCategory(CategoryDTO categoryDTO);
 
     @Mapping(source = "name", target = "name")
     @Mapping(source = "description", target = "description")
-    CategoryRequest toCategoryRequest(Category category);
+    CategoryDTO toCategoryRequest(Category category);
 
 
 }

@@ -1,6 +1,6 @@
 package com.emazon.stock_microservice.application.handler;
 
-import com.emazon.stock_microservice.application.dto.CategoryRequest;
+import com.emazon.stock_microservice.application.dto.CategoryDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -9,16 +9,16 @@ import java.util.List;
 
 public interface ICategoryHandler {
 
-    void saveCategory(CategoryRequest category); // CREATE
+    void saveCategory(CategoryDTO category); // CREATE
 
-    CategoryRequest getCategory(Long id);  // GET
+    CategoryDTO getCategory(String categoryName);  // GET
 
-    void updateCategory(CategoryRequest categoryDTO); // UPDATE
+    void updateCategory(CategoryDTO categoryDTO); // UPDATE
 
     void deleteCategory(long id); // DELETE
 
-    Page<CategoryRequest> getAllCategoriesPaged(Pageable pageable); // GET ALL
+    Page<CategoryDTO> getAllCategoriesPaged(Pageable pageable); // GET ALL
 
-    List<CategoryRequest> getAllCategories();
+    List<CategoryDTO> getAllCategories();
 
 }

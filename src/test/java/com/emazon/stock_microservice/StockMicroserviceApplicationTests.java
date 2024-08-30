@@ -8,7 +8,7 @@ class StockMicroserviceApplicationTests {
 
 	@Test
 	void contextLoads() {
-		// No se esta vacio pero bueno
+		// It's empty for now
 	}
 
 }

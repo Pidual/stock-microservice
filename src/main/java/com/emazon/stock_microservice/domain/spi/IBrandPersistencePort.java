@@ -1,27 +1,22 @@
 package com.emazon.stock_microservice.domain.spi;
 
 import com.emazon.stock_microservice.domain.model.Brand;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
 
 import java.util.List;
 
 public interface IBrandPersistencePort {
 
+    List<Brand> getAllBrands(); // retorna una lista
+    CustomPage<Brand> getBrandsForPagination(CustomPageRequest customPageRequest); //retorna una paginacion
+
+    Brand getBrand(String name);
     void saveBrand(Brand brand);
-
-
-
-    Brand getBrand(Long id);
-
-    void deleteBrand(Long id);
-
     void updateBrand(Brand brand);
+    void deleteBrand(String name);
 
-    Brand getBrandByName(String name);
 
-    Page<Brand> getAllBrandsPaged(Pageable pageable);
 
-    List<Brand> getAllBrands();
 
 }

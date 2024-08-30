@@ -1,7 +1,7 @@
 package com.emazon.stock_microservice.application.mapper;
 
 
-import com.emazon.stock_microservice.application.dto.BrandRequest;
+import com.emazon.stock_microservice.application.dto.BrandDTO;
 import com.emazon.stock_microservice.domain.model.Brand;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -20,9 +20,12 @@ public interface BrandRequestMapper {
 
     @Mapping(source = "name", target = "name")
     @Mapping(source = "description", target = "description")
-    Brand toBrand(BrandRequest brandRequest);
+    Brand toBrand(BrandDTO brandDTO);
 
     @Mapping(source = "name", target = "name")
     @Mapping(source = "description", target = "description")
-    BrandRequest toBrandRequest(Brand brand);
+    BrandDTO toBrandRequest(Brand brand);
+
+
+
 }
