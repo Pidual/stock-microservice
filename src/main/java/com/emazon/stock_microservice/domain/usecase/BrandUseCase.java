@@ -10,18 +10,13 @@ import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
 import com.emazon.stock_microservice.domain.spi.IBrandPersistencePort;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
 
-import java.util.List;
+import static com.emazon.stock_microservice.common.Constants.*;
 
+import java.util.List;
 
 public class BrandUseCase  implements IBrandServicePort {
 
     private final IBrandPersistencePort brandJpaAdapter; //brandJpa !!!
-
-    private static final String WRONG_NAME_ERROR = "El nombre de marca no debe contener mas de 50 caracteres, estar vacio, o ser nullo";
-    private static final String WRONG_DESCRIPTION_ERROR = "La descripcion de la marca no debe contener mas de 120 caracteres, estar vacio o ser nullo";
-    private static final String ALREADY_EXITS_ERROR = "La marca ya existe";
-    private static final String NOT_FOUND_ERROR = "No encontrada";
-
 
     public BrandUseCase(IBrandPersistencePort brandJpaAdapter) {
         this.brandJpaAdapter = brandJpaAdapter;

@@ -1,12 +1,10 @@
 package com.emazon.stock_microservice.application.dto;
 
-import com.emazon.stock_microservice.domain.model.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -19,6 +17,6 @@ public class ArticleDTO {
     private String description;
     private int quantity;
     private double price;
-    private Set<Category> categories = new HashSet<>(); // Set para garantizar unicidad
-
+    private String brandName; // agregado en la hu.5 no decia nada de esto pero en la base de datos si entonces que se hace? 👀👀
+    private Set<String> categoryNames;
 }

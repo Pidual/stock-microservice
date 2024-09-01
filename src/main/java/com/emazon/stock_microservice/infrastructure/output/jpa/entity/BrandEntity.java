@@ -6,20 +6,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity     // @Entity for jpa
 @Table(name = "brand")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 public class BrandEntity {
-    // el decorador @Entity para indicar que estamos usando jpa
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
+
         @Column(nullable = false,length = 50,unique = true)
         private String name;
+
         @Column(nullable = false, length = 120)
         private String description;
 

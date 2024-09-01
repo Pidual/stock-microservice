@@ -16,7 +16,7 @@ import org.springframework.data.domain.Sort;
 import java.util.List;
 
 /**
- * que clase es esta? Implementa IBrandPersistencePort que esta en el dominio
+ * implemented by the useCase in the domain layer
  * Esta clase hace parte de la INFRAESTRUCTURA
  * Utiliza brandRepository
  * Utiliza brandMapper (este es para transformar objetos)

@@ -2,6 +2,7 @@ package com.emazon.stock_microservice.infrastructure.input.rest;
 
 import com.emazon.stock_microservice.application.dto.CategoryDTO;
 import com.emazon.stock_microservice.application.handler.ICategoryHandler;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -43,7 +44,7 @@ public class CategoryRestController {
     @Operation(summary = "Add a new category")
     @ApiResponse(responseCode = "201", description = "Category created successfully")
     @PostMapping("/")
-    public ResponseEntity<Void> addCategory(@RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<Void> addCategory(@RequestBody @Valid CategoryDTO categoryDTO) {
         categoryHandler.saveCategory(categoryDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -60,7 +61,7 @@ public class CategoryRestController {
     @Operation(summary = "Update a category by its name")
     @ApiResponse(responseCode = "204", description = "Successfully  updated a category using its name")
     @PutMapping("/")
-    public ResponseEntity<Void> updateCategory(@RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<Void> updateCategory(@RequestBody @Valid CategoryDTO categoryDTO) {
         categoryHandler.updateCategory(categoryDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -73,7 +74,4 @@ public class CategoryRestController {
         categoryHandler.deleteCategory(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-
-
 }
