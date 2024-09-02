@@ -8,11 +8,14 @@ import java.util.List;
 
 /**
  * This is the interface of brand handler
- * its implemented in the aplication layer
- * its called in the rest controller
- * and
+ * it's implemented in the application layer
+ * it's called in the rest controller
  */
 public interface IBrandHandler {
+
+    Page<BrandDTO> getAllBrandsPaged(Pageable pageable);
+
+    List<BrandDTO> findAllBrands();
 
     void saveBrand(BrandDTO brandDTO);
 
@@ -22,9 +25,5 @@ public interface IBrandHandler {
 
     BrandDTO getBrand(String brandName);
 
-    Page<BrandDTO> getAllBrandsPaged(Pageable pageable);
-
-
-    List<BrandDTO> findAllBrands();
 
 }

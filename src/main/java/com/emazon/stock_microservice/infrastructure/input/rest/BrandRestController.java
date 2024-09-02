@@ -5,6 +5,7 @@ import com.emazon.stock_microservice.application.handler.IBrandHandler;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -14,8 +15,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
-
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/brands")
@@ -25,19 +26,18 @@ public class BrandRestController {
 
     private final IBrandHandler brandHandler;
 
+
     @Operation(summary = "Retrieve a paginated list of brands")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200",
-                    description = "Successfully retrieved a page of brands",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))),
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved a page of brands", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))),
             @ApiResponse(responseCode = "400", description = "Invalid pagination parameters", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
-    })
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)})
     @GetMapping("/paged")
     public ResponseEntity<Page<BrandDTO>> getBrandsPaged(Pageable pageable) {
         Page<BrandDTO> brands = brandHandler.getAllBrandsPaged(pageable);
         return new ResponseEntity<>(brands, HttpStatus.OK);
     }
+
 
     @Operation(summary = "Add a new brand")
     @ApiResponses(value = {
@@ -46,14 +46,14 @@ public class BrandRestController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @PostMapping("/")
-    public ResponseEntity<Void> addBrand(@RequestBody BrandDTO brandDTO){
+    public ResponseEntity<Void> addBrand(@RequestBody @Valid BrandDTO brandDTO){ //@Valid for validation before reaching the domain
         brandHandler.saveBrand(brandDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+
     @Operation(summary = "Retrieve a brand by its name")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully retrieved the brand",
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Successfully retrieved the brand",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = BrandDTO.class))),
             @ApiResponse(responseCode = "404", description = "Brand not found", content = @Content),
@@ -64,6 +64,7 @@ public class BrandRestController {
         return new ResponseEntity<>(brandHandler.getBrand(brandName), HttpStatus.OK);
     }
 
+
     @Operation(summary = "Update an existing brand")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Brand updated successfully"),
@@ -71,8 +72,8 @@ public class BrandRestController {
             @ApiResponse(responseCode = "404", description = "Brand not found", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
-
-    public ResponseEntity<Void> updateBrand(@RequestBody BrandDTO brandDTO){
+    @PutMapping("/")
+    public ResponseEntity<Void> updateBrand(@RequestBody @Valid BrandDTO brandDTO){
         brandHandler.updateBrand(brandDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -89,6 +90,7 @@ public class BrandRestController {
         brandHandler.deleteBrand(brandDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 
     @Operation(summary = "Retrieve all brands")
     @ApiResponses(value = {

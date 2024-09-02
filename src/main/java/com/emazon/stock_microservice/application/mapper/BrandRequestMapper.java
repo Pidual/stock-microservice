@@ -18,12 +18,10 @@ import org.mapstruct.ReportingPolicy;
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface BrandRequestMapper {
 
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "description", target = "description")
+
     Brand toBrand(BrandDTO brandDTO);
 
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "description", target = "description")
+
     BrandDTO toBrandRequest(Brand brand);
 
 

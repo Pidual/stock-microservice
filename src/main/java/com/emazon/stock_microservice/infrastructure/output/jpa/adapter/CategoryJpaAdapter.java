@@ -5,14 +5,12 @@ import com.emazon.stock_microservice.domain.spi.ICategoryPersistencePort;
 import com.emazon.stock_microservice.domain.exceptions.NoDataException;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
 import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
-import com.emazon.stock_microservice.infrastructure.output.jpa.entity.BrandEntity;
 import com.emazon.stock_microservice.infrastructure.output.jpa.entity.CategoryEntity;
 import com.emazon.stock_microservice.infrastructure.output.jpa.mapper.CategoryEntityMapper;
 import com.emazon.stock_microservice.infrastructure.output.jpa.repository.ICategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;

@@ -10,34 +10,19 @@ public class Article {
     private String description;
     private int quantity;
     private double price;
+    private Brand brand;
     private Set<Category> categories = new HashSet<>(); // Set para garantizar unicidad
 
-    public Article(Long id, String name, String description, int quantity, double price) {
+    public Article(Long id, double price, int quantity, String description, String name,Brand brand, Set<Category> categories) {
         this.id = id;
-        this.name = name;
-        this.description = description;
-        this.quantity = quantity;
+        this.categories = categories;
+        this.brand = brand;
         this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.name = name;
     }
 
-    // Métodos para agregar categorías asegurando que no haya duplicados y que el tamaño sea el adecuado
-    public void addCategory(Category category) {
-        if (categories.size() >= 3) {
-            throw new IllegalArgumentException("Un artículo no puede tener más de 3 categorías.");
-        }
-        categories.add(category);
-    }
-
-    public void validate() {
-        if (categories.size() < 1) {
-            throw new IllegalArgumentException("Un artículo debe tener al menos una categoría.");
-        }
-        if (categories.size() > 3) {
-            throw new IllegalArgumentException("Un artículo no puede tener más de 3 categorías.");
-        }
-    }
-
-    // Getters y Setters
 
     public Long getId() {
         return id;
@@ -77,6 +62,14 @@ public class Article {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public Set<Category> getCategories() {

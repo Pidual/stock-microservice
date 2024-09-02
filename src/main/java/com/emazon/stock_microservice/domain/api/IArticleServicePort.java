@@ -1,13 +1,13 @@
-package com.emazon.stock_microservice.domain.spi;
+package com.emazon.stock_microservice.domain.api;
 
 import com.emazon.stock_microservice.domain.model.Article;
 
 import java.util.List;
 
-public interface IArticlePersistencePort {
+public interface IArticleServicePort {
 
     void saveArticle(Article article);
-    Article getArticle(String articleId);
 
     List<Article> getAllArticles();
+
 }

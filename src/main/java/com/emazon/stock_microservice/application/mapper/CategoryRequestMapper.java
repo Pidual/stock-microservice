@@ -3,7 +3,6 @@ package com.emazon.stock_microservice.application.mapper;
 import com.emazon.stock_microservice.application.dto.CategoryDTO;
 import com.emazon.stock_microservice.domain.model.Category;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring",
@@ -11,13 +10,8 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CategoryRequestMapper {
 
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "description", target = "description")
+
     Category toCategory(CategoryDTO categoryDTO);
 
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "description", target = "description")
     CategoryDTO toCategoryRequest(Category category);
-
-
 }
