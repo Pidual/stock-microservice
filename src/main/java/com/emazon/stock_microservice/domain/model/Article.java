@@ -1,6 +1,5 @@
 package com.emazon.stock_microservice.domain.model;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class Article {
@@ -11,7 +10,7 @@ public class Article {
     private int quantity;
     private double price;
     private Brand brand;
-    private Set<Category> categories = new HashSet<>(); // Set para garantizar unicidad
+    private Set<Category> categories; // Set para garantizar unicidad
 
     public Article(Long id, double price, int quantity, String description, String name,Brand brand, Set<Category> categories) {
         this.id = id;

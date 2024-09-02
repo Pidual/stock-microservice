@@ -26,8 +26,12 @@ public class CategoryHandler implements ICategoryHandler {
 
     @Override
     public Page<CategoryDTO> getAllCategoriesPaged(Pageable pageable) {
+        //Criterio de ordenacion
+        String sortBy = pageable.getSort().isSorted() ? pageable.getSort().toList().get(0).getProperty() : "name";
+        boolean ascending = pageable.getSort().isSorted() ? pageable.getSort().toList().get(0).isAscending() : true;
+
         // de page.spring a page.domain
-        CustomPageRequest customPageRequest = new CustomPageRequest(pageable.getPageNumber(),pageable.getPageSize(),pageable.getSort().isSorted());
+        CustomPageRequest customPageRequest = new CustomPageRequest(pageable.getPageNumber(),pageable.getPageSize(),ascending,sortBy);
         // get all the categories from the domain in page.domain format
         CustomPage<Category> customPage = categoryUseCase.getAllCategoriesPaged(customPageRequest);
         //then covert the custom page to page.spring

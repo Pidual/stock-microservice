@@ -7,6 +7,9 @@ import com.emazon.stock_microservice.domain.exceptions.WrongDescriptionException
 import com.emazon.stock_microservice.domain.exceptions.WrongNameException;
 import com.emazon.stock_microservice.domain.model.Article;
 import com.emazon.stock_microservice.domain.spi.IArticlePersistencePort;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
+
 
 import java.util.List;
 
@@ -17,6 +20,15 @@ public class ArticleUseCase implements IArticleServicePort {
     public ArticleUseCase(IArticlePersistencePort articleJpaAdapter) {
         this.articleJpaAdapter = articleJpaAdapter;
     }
+
+
+    @Override
+    public CustomPage<Article> getAllArticlesPaged(CustomPageRequest customPageRequest) {
+        return articleJpaAdapter.getArticlesForPagination(customPageRequest);
+    }
+
+
+
 
     @Override
     public void saveArticle(Article article) {

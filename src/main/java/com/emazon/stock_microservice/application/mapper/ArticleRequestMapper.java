@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 /**
  * Mapper para transofrmar de Articulos a ArticulosDTO
  * Mapper para transofrmar de Dominio a Aplicacion
- *
  */
 
 @Mapper(componentModel = "spring")
@@ -22,9 +21,9 @@ public interface ArticleRequestMapper {
 
     @Mapping(source = "brand.name", target = "brandName")
     @Mapping(source = "categories", target = "categoryNames")
-    ArticleDTO toArticleDTO(Article article);
+    ArticleDTO toArticleRequest(Article article);
 
-    // Método para mapear de Set<Category> a Set<String>
+    //  to map from Set<Category> to Set<String>
     default Set<String> mapCategoriesToCategoryNames(Set<Category> categories) {
         return categories.stream()
                 .map(Category::getName)
