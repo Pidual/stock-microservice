@@ -58,3 +58,32 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+<<<<<<< Updated upstream
+=======
+
+jacoco {
+	toolVersion = "0.8.8" // Versión de JaCoCo, asegúrate de que esté actualizada
+}
+
+jacocoTestReport {
+	dependsOn test // Asegura que las pruebas se ejecuten antes de generar el reporte
+	reports {
+		html.required.set(true) // Habilita el reporte HTML
+		xml.required.set(false)  // Deshabilita el reporte XML
+		csv.required.set(false)  // Deshabilita el reporte CSV
+		html.outputLocation.set(file("$buildDir/reports/jacoco")) // Carpeta de salida para el reporte HTML
+	}
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = 0.01 // Requiere al menos 80% de cobertura
+			}
+		}
+	}
+}
+
+test.finalizedBy jacocoTestCoverageVerification
+>>>>>>> Stashed changes
