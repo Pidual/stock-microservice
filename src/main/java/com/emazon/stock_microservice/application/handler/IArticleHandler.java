@@ -21,9 +21,5 @@ public interface IArticleHandler {
 
     List<ArticleDTO> getAllArticles();
 
-    // void updateArticle(@Valid ArticleDTO articleDTO);
-
-
-   // ArticleDTO getArticle(String articleName);
 
 }

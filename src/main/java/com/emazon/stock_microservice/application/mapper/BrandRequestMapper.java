@@ -4,7 +4,6 @@ package com.emazon.stock_microservice.application.mapper;
 import com.emazon.stock_microservice.application.dto.BrandDTO;
 import com.emazon.stock_microservice.domain.model.Brand;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 /**

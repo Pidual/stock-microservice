@@ -1,6 +1,8 @@
 package com.emazon.stock_microservice.domain.spi;
 
 import com.emazon.stock_microservice.domain.model.Article;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPage;
+import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
 
 import java.util.List;
 
@@ -10,4 +12,6 @@ public interface IArticlePersistencePort {
     Article getArticle(String articleId);
 
     List<Article> getAllArticles();
+
+    CustomPage<Article> getArticlesForPagination(CustomPageRequest customPageRequest);
 }
