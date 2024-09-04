@@ -28,8 +28,6 @@ public class ArticleUseCase implements IArticleServicePort {
     }
 
 
-
-
     @Override
     public void saveArticle(Article article) {
             validateArticle(article);

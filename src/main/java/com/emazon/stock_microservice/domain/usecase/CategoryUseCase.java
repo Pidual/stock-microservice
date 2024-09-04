@@ -8,7 +8,6 @@ import com.emazon.stock_microservice.domain.util.pageable.CustomPageRequest;
 
 import java.util.List;
 
-//TODO: ADD VERIFICATIONS IN THIS CLASS
 public class CategoryUseCase implements ICategoryServicePort {
 
     private final ICategoryPersistencePort categoryJpaAdapter;
