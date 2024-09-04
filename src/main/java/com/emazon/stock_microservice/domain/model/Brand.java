@@ -8,7 +8,7 @@ public class Brand {
 
     // Constructors, getters, setters, and business logic methods
 
-    public Brand(Long id, String description, String name) {
+    public Brand(Long id, String name,String description) {
         this.id = id;
         this.description = description;
         this.name = name;
