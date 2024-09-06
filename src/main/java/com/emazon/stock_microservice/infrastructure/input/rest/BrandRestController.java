@@ -32,7 +32,7 @@ public class BrandRestController {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved a page of brands", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))),
             @ApiResponse(responseCode = "400", description = "Invalid pagination parameters", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)})
-    @GetMapping("/paged")
+    @GetMapping("/paged/")
     public ResponseEntity<Page<BrandDTO>> getBrandsPaged(Pageable pageable) {
         Page<BrandDTO> brands = brandHandler.getAllBrandsPaged(pageable);
         return new ResponseEntity<>(brands, HttpStatus.OK);

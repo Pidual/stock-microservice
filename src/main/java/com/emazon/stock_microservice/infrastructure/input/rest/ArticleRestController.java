@@ -35,7 +35,7 @@ public class ArticleRestController {
             @ApiResponse(responseCode = "400", description = "Invalid pagination parameters", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
-    @GetMapping("/paged")
+    @GetMapping("/paged/")
     public ResponseEntity<Page<ArticleDTO>> getArticlesPaged(Pageable pageable) {
         Page<ArticleDTO> articles = articleHandler.getAllArticlesPaged(pageable);
         return new ResponseEntity<>(articles, HttpStatus.OK);

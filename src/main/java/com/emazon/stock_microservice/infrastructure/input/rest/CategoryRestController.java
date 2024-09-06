@@ -26,7 +26,7 @@ public class CategoryRestController {
     // Read GET
     @Operation(summary = "Get all categories")
     @ApiResponse(responseCode = "200", description = "Successfully retrieved a pageable of categories")
-    @GetMapping("/paged")
+    @GetMapping("/paged/")
     public ResponseEntity<Page<CategoryDTO>> getCategoriesPaged(Pageable pageable){
         Page<CategoryDTO> categories = categoryHandler.getAllCategoriesPaged(pageable);
         return new ResponseEntity<>(categories, HttpStatus.OK);
