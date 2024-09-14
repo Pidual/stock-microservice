@@ -12,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +22,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/articles")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@Validated
+
 public class ArticleRestController {
 
     private final IArticleHandler articleHandler;
@@ -56,12 +59,8 @@ public class ArticleRestController {
     }
 
 
-    @Operation(summary = "Retrieve all articles")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully retrieved all articles",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
-    })
+    // @pre authorize este decorador asegura que solo los usuarios con el rol ROLE_ADMIN pueden acceder al endpoint /users/aux_bodega.
+    @PreAuthorize("hasRole('ROLE_AUX_BODEGA')")
     @GetMapping("/")
     public ResponseEntity<List<ArticleDTO>> getAllArticles() {
         List<ArticleDTO> articles = articleHandler.getAllArticles();

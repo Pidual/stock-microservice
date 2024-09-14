@@ -44,6 +44,16 @@ dependencies {
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 	testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
+	// Spring Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-config'
+	implementation 'org.springframework.security:spring-security-web'
+
+	// JWT
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'  // Si usas JSON para los tokens
+
 	// JUnit 5 (actualiza a una versión más reciente)
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
@@ -57,7 +67,6 @@ dependencies {
 	// Conector MySQL (solo necesario si usas MySQL en pruebas)
 	runtimeOnly 'com.mysql:mysql-connector-j'
 }
-
 tasks.named('test') {
 	useJUnitPlatform()
 	finalizedBy jacocoTestReport // Genera el reporte de cobertura después de ejecutar las pruebas
