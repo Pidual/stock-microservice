@@ -29,7 +29,7 @@ public class BrandHandler implements IBrandHandler {
     public Page<BrandDTO> getAllBrandsPaged(Pageable pageable) {
         // criteori ode ordenacion
         String sortBy = pageable.getSort().isSorted() ? pageable.getSort().toList().get(0).getProperty() : "name";
-        boolean ascending = pageable.getSort().isSorted() ? pageable.getSort().toList().get(0).isAscending() : true;
+        boolean ascending = !pageable.getSort().isSorted() || pageable.getSort().toList().get(0).isAscending();
 
        // de page.spring a page.domain
         CustomPageRequest  customPageRequest = new CustomPageRequest(pageable.getPageNumber(),pageable.getPageSize(),ascending,sortBy);

@@ -52,6 +52,7 @@ public class ArticleRestController {
             @ApiResponse(responseCode = "400", description = "Invalid input data", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping("/")
     public ResponseEntity<Void> addArticle(@RequestBody @Valid ArticleDTO articleDTO){
         articleHandler.saveArticle(articleDTO);
@@ -60,7 +61,6 @@ public class ArticleRestController {
 
 
     // @pre authorize este decorador asegura que solo los usuarios con el rol ROLE_ADMIN pueden acceder al endpoint /users/aux_bodega.
-    @PreAuthorize("hasRole('ROLE_AUX_BODEGA')")
     @GetMapping("/")
     public ResponseEntity<List<ArticleDTO>> getAllArticles() {
         List<ArticleDTO> articles = articleHandler.getAllArticles();
