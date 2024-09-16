@@ -59,13 +59,17 @@ public class ArticleRestController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
+    //TODO: DOCUMENT TOO FUCK
     // @pre authorize este decorador asegura que solo los usuarios con el rol ROLE_ADMIN pueden acceder al endpoint /users/aux_bodega.
     @GetMapping("/")
     public ResponseEntity<List<ArticleDTO>> getAllArticles() {
         List<ArticleDTO> articles = articleHandler.getAllArticles();
         return new ResponseEntity<>(articles, HttpStatus.OK);
     }
+
+    
+    //TODO CREATE UPDATE ARTICLE
+
 
 
 }
