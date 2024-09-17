@@ -1,6 +1,8 @@
 package com.emazon.stock_microservice.application.handler;
 
 import com.emazon.stock_microservice.application.dto.ArticleDTO;
+import com.emazon.stock_microservice.application.dto.ArticleStockRequestDTO;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -19,5 +21,7 @@ public interface IArticleHandler {
 
     List<ArticleDTO> getAllArticles();
 
+    //metodo para agregar cantidades a un articulo
+    void addStockToArticle(@Valid ArticleStockRequestDTO articleStockRequestDTO);
 
 }

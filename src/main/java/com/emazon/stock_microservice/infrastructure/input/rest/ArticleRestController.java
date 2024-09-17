@@ -1,6 +1,7 @@
 package com.emazon.stock_microservice.infrastructure.input.rest;
 
 import com.emazon.stock_microservice.application.dto.ArticleDTO;
+import com.emazon.stock_microservice.application.dto.ArticleStockRequestDTO;
 import com.emazon.stock_microservice.application.handler.IArticleHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -28,7 +29,11 @@ public class ArticleRestController {
 
     private final IArticleHandler articleHandler;
 
-
+    @GetMapping("/")
+    public ResponseEntity<List<ArticleDTO>> getAllArticles() {
+        List<ArticleDTO> articles = articleHandler.getAllArticles();
+        return new ResponseEntity<>(articles, HttpStatus.OK);
+    }
 
     @Operation(summary = "Retrieve a paginated list of articles")
     @ApiResponses(value = {
@@ -58,14 +63,14 @@ public class ArticleRestController {
         articleHandler.saveArticle(articleDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+    
 
 
-    // @pre authorize este decorador asegura que solo los usuarios con el rol ROLE_ADMIN pueden acceder al endpoint /users/aux_bodega.
-    @GetMapping("/")
-    public ResponseEntity<List<ArticleDTO>> getAllArticles() {
-        List<ArticleDTO> articles = articleHandler.getAllArticles();
-        return new ResponseEntity<>(articles, HttpStatus.OK);
+    @PreAuthorize("hasAnyRole('AUX_BODEGA')")
+    @PatchMapping("/add-stock")
+    public ResponseEntity<Void> addArticleStock(@RequestBody @Valid ArticleStockRequestDTO articleStockRequestDTO) {
+        articleHandler.addStockToArticle(articleStockRequestDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
 }

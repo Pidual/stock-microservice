@@ -1,6 +1,7 @@
 package com.emazon.stock_microservice.application.handler;
 
 import com.emazon.stock_microservice.application.dto.ArticleDTO;
+import com.emazon.stock_microservice.application.dto.ArticleStockRequestDTO;
 import com.emazon.stock_microservice.application.mapper.ArticleRequestMapper;
 import com.emazon.stock_microservice.application.mapper.PageMapper;
 import com.emazon.stock_microservice.domain.api.IArticleServicePort;
@@ -38,6 +39,7 @@ public class ArticleHandler implements IArticleHandler {
     private final ICategoryServicePort categoryUseCase;
 
     private final ArticleRequestMapper articleRequestMapper;
+    private final IArticleServicePort articleServicePort;
 
     @Override
     public Page<ArticleDTO> getAllArticlesPaged(Pageable pageable) {
@@ -83,6 +85,10 @@ public class ArticleHandler implements IArticleHandler {
         return articles.stream().map(articleRequestMapper::toArticleRequest).toList();
     }
 
+    @Override
+    public void addStockToArticle(ArticleStockRequestDTO articleStockRequestDTO) {
+        articleServicePort.addStock(articleStockRequestDTO.getArticleName(), articleStockRequestDTO.getAdditionalStock());
+    }
 
 
 }
