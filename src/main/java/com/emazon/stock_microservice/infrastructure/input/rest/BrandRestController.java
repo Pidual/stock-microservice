@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -45,6 +46,7 @@ public class BrandRestController {
             @ApiResponse(responseCode = "400", description = "Invalid input data", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping("/")
     public ResponseEntity<Void> addBrand(@RequestBody @Valid BrandDTO brandDTO){ //@Valid for validation before reaching the domain
         brandHandler.saveBrand(brandDTO);
@@ -72,6 +74,7 @@ public class BrandRestController {
             @ApiResponse(responseCode = "404", description = "Brand not found", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PutMapping("/")
     public ResponseEntity<Void> updateBrand(@RequestBody @Valid BrandDTO brandDTO){
         brandHandler.updateBrand(brandDTO);
@@ -85,6 +88,7 @@ public class BrandRestController {
             @ApiResponse(responseCode = "404", description = "Brand not found", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping("/")
     public ResponseEntity<Void> deleteBrand(@RequestBody BrandDTO brandDTO){
         brandHandler.deleteBrand(brandDTO);

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -43,6 +44,7 @@ public class CategoryRestController {
     //Create POST
     @Operation(summary = "Add a new category")
     @ApiResponse(responseCode = "201", description = "Category created successfully")
+    @PreAuthorize("hasAnyRole('AUX_BODEGA', 'ADMIN')") // POST
     @PostMapping("/")
     public ResponseEntity<Void> addCategory(@RequestBody @Valid CategoryDTO categoryDTO) {
         categoryHandler.saveCategory(categoryDTO);
@@ -60,6 +62,7 @@ public class CategoryRestController {
 
     @Operation(summary = "Update a category by its name")
     @ApiResponse(responseCode = "204", description = "Successfully  updated a category using its name")
+    @PreAuthorize("hasAnyRole('AUX_BODEGA', 'ADMIN')")
     @PutMapping("/")
     public ResponseEntity<Void> updateCategory(@RequestBody @Valid CategoryDTO categoryDTO) {
         categoryHandler.updateCategory(categoryDTO);
@@ -69,6 +72,7 @@ public class CategoryRestController {
 
     @Operation(summary = "Deletes a category")
     @ApiResponse(responseCode = "204", description = "Successfully deleted a category")
+    @PreAuthorize("hasAnyRole('AUX_BODEGA', 'ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         categoryHandler.deleteCategory(id);

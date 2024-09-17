@@ -48,7 +48,7 @@ public class BrandUseCase  implements IBrandServicePort {
     public void saveBrand(Brand brand) {
         validateBrand(brand);
         if (brandJpaAdapter.getBrand(brand.getName()) != null) {
-            throw new AlreadyExistsException(ALREADY_EXITS_ERROR);
+            throw new AlreadyExistsException(BRAND_ALREADY_EXITS_ERROR);
         }
         this.brandJpaAdapter.saveBrand(brand);
     }
