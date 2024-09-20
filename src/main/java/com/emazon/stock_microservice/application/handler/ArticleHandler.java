@@ -87,7 +87,7 @@ public class ArticleHandler implements IArticleHandler {
 
     @Override
     public void addStockToArticle(ArticleStockRequestDTO articleStockRequestDTO) {
-        articleServicePort.addStock(articleStockRequestDTO.getArticleName(), articleStockRequestDTO.getAdditionalStock());
+        articleServicePort.addStock(articleStockRequestDTO.getArticleName(), articleStockRequestDTO.getQuantity());
     }
 
 

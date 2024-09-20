@@ -11,5 +11,5 @@ public class ArticleStockRequestDTO {
     private String articleName;
 
     @Min(value = 1, message = "Stock to add must be at least 1")
-    private int additionalStock;
+    private int quantity;
 }
